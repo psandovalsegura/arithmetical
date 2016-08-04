@@ -8,22 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		9B0FA1AB1D53C11400763A77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0FA1AA1D53C11400763A77 /* AppDelegate.swift */; };
-		9B0FA1AD1D53C11400763A77 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0FA1AC1D53C11400763A77 /* ViewController.swift */; };
 		9B0FA1B01D53C11400763A77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B0FA1AE1D53C11400763A77 /* Main.storyboard */; };
 		9B0FA1B31D53C11400763A77 /* arithmetical.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B0FA1B11D53C11400763A77 /* arithmetical.xcdatamodeld */; };
 		9B0FA1B51D53C11400763A77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B0FA1B41D53C11400763A77 /* Assets.xcassets */; };
 		9B0FA1B81D53C11400763A77 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B0FA1B61D53C11400763A77 /* LaunchScreen.storyboard */; };
+		9B0FA1C61D53CFC900763A77 /* SanFranciscoText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B0FA1C01D53CF2700763A77 /* SanFranciscoText-Bold.otf */; };
+		9B0FA1C71D53CFC900763A77 /* SanFranciscoText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B0FA1C11D53CF2700763A77 /* SanFranciscoText-Heavy.otf */; };
+		9B0FA1C81D53CFC900763A77 /* SanFranciscoText-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B0FA1C21D53CF2700763A77 /* SanFranciscoText-Light.otf */; };
+		9B0FA1C91D53CFC900763A77 /* SanFranciscoText-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B0FA1C31D53CF2700763A77 /* SanFranciscoText-Medium.otf */; };
+		9B0FA1CA1D53CFC900763A77 /* SanFranciscoText-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B0FA1C41D53CF2700763A77 /* SanFranciscoText-Regular.otf */; };
+		9B0FA1CB1D53CFC900763A77 /* SanFranciscoText-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9B0FA1C51D53CF2700763A77 /* SanFranciscoText-Semibold.otf */; };
+		9B0FA1CD1D53D1DB00763A77 /* PlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0FA1CC1D53D1DB00763A77 /* PlayViewController.swift */; };
+		9B0FA1D01D53D51500763A77 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0FA1CF1D53D51500763A77 /* MainViewController.swift */; };
+		9B0FA1D21D53D54200763A77 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0FA1D11D53D54200763A77 /* StatsViewController.swift */; };
+		9B0FA1D41D53D54C00763A77 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0FA1D31D53D54C00763A77 /* SettingsViewController.swift */; };
+		9B0FA1D71D53D5FE00763A77 /* GameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0FA1D61D53D5FE00763A77 /* GameTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		9B0FA1A71D53C11400763A77 /* arithmetical.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arithmetical.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0FA1AA1D53C11400763A77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9B0FA1AC1D53C11400763A77 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9B0FA1AF1D53C11400763A77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B0FA1B21D53C11400763A77 /* arithmetical.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = arithmetical.xcdatamodel; sourceTree = "<group>"; };
 		9B0FA1B41D53C11400763A77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9B0FA1B71D53C11400763A77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9B0FA1B91D53C11400763A77 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9B0FA1C01D53CF2700763A77 /* SanFranciscoText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Bold.otf"; sourceTree = "<group>"; };
+		9B0FA1C11D53CF2700763A77 /* SanFranciscoText-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Heavy.otf"; sourceTree = "<group>"; };
+		9B0FA1C21D53CF2700763A77 /* SanFranciscoText-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Light.otf"; sourceTree = "<group>"; };
+		9B0FA1C31D53CF2700763A77 /* SanFranciscoText-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Medium.otf"; sourceTree = "<group>"; };
+		9B0FA1C41D53CF2700763A77 /* SanFranciscoText-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Regular.otf"; sourceTree = "<group>"; };
+		9B0FA1C51D53CF2700763A77 /* SanFranciscoText-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Semibold.otf"; sourceTree = "<group>"; };
+		9B0FA1CC1D53D1DB00763A77 /* PlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayViewController.swift; sourceTree = "<group>"; };
+		9B0FA1CF1D53D51500763A77 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9B0FA1D11D53D54200763A77 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatsViewController.swift; sourceTree = "<group>"; };
+		9B0FA1D31D53D54C00763A77 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		9B0FA1D61D53D5FE00763A77 /* GameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +76,49 @@
 		9B0FA1A91D53C11400763A77 /* arithmetical */ = {
 			isa = PBXGroup;
 			children = (
+				9B0FA1BF1D53CF0500763A77 /* Resources */,
 				9B0FA1AA1D53C11400763A77 /* AppDelegate.swift */,
-				9B0FA1AC1D53C11400763A77 /* ViewController.swift */,
+				9B0FA1CF1D53D51500763A77 /* MainViewController.swift */,
+				9B0FA1CE1D53D4E700763A77 /* Main Options */,
+				9B0FA1D51D53D5DE00763A77 /* Views */,
 				9B0FA1AE1D53C11400763A77 /* Main.storyboard */,
-				9B0FA1B41D53C11400763A77 /* Assets.xcassets */,
 				9B0FA1B61D53C11400763A77 /* LaunchScreen.storyboard */,
+				9B0FA1B41D53C11400763A77 /* Assets.xcassets */,
 				9B0FA1B91D53C11400763A77 /* Info.plist */,
 				9B0FA1B11D53C11400763A77 /* arithmetical.xcdatamodeld */,
 			);
 			path = arithmetical;
+			sourceTree = "<group>";
+		};
+		9B0FA1BF1D53CF0500763A77 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				9B0FA1C01D53CF2700763A77 /* SanFranciscoText-Bold.otf */,
+				9B0FA1C11D53CF2700763A77 /* SanFranciscoText-Heavy.otf */,
+				9B0FA1C21D53CF2700763A77 /* SanFranciscoText-Light.otf */,
+				9B0FA1C31D53CF2700763A77 /* SanFranciscoText-Medium.otf */,
+				9B0FA1C41D53CF2700763A77 /* SanFranciscoText-Regular.otf */,
+				9B0FA1C51D53CF2700763A77 /* SanFranciscoText-Semibold.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		9B0FA1CE1D53D4E700763A77 /* Main Options */ = {
+			isa = PBXGroup;
+			children = (
+				9B0FA1CC1D53D1DB00763A77 /* PlayViewController.swift */,
+				9B0FA1D11D53D54200763A77 /* StatsViewController.swift */,
+				9B0FA1D31D53D54C00763A77 /* SettingsViewController.swift */,
+			);
+			name = "Main Options";
+			sourceTree = "<group>";
+		};
+		9B0FA1D51D53D5DE00763A77 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9B0FA1D61D53D5FE00763A77 /* GameTableViewCell.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -99,6 +153,7 @@
 				TargetAttributes = {
 					9B0FA1A61D53C11400763A77 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 5HLDUZFLDY;
 					};
 				};
 			};
@@ -125,6 +180,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B0FA1C61D53CFC900763A77 /* SanFranciscoText-Bold.otf in Resources */,
+				9B0FA1C71D53CFC900763A77 /* SanFranciscoText-Heavy.otf in Resources */,
+				9B0FA1C81D53CFC900763A77 /* SanFranciscoText-Light.otf in Resources */,
+				9B0FA1C91D53CFC900763A77 /* SanFranciscoText-Medium.otf in Resources */,
+				9B0FA1CA1D53CFC900763A77 /* SanFranciscoText-Regular.otf in Resources */,
+				9B0FA1CB1D53CFC900763A77 /* SanFranciscoText-Semibold.otf in Resources */,
 				9B0FA1B81D53C11400763A77 /* LaunchScreen.storyboard in Resources */,
 				9B0FA1B51D53C11400763A77 /* Assets.xcassets in Resources */,
 				9B0FA1B01D53C11400763A77 /* Main.storyboard in Resources */,
@@ -138,9 +199,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B0FA1D71D53D5FE00763A77 /* GameTableViewCell.swift in Sources */,
+				9B0FA1CD1D53D1DB00763A77 /* PlayViewController.swift in Sources */,
 				9B0FA1B31D53C11400763A77 /* arithmetical.xcdatamodeld in Sources */,
-				9B0FA1AD1D53C11400763A77 /* ViewController.swift in Sources */,
 				9B0FA1AB1D53C11400763A77 /* AppDelegate.swift in Sources */,
+				9B0FA1D21D53D54200763A77 /* StatsViewController.swift in Sources */,
+				9B0FA1D01D53D51500763A77 /* MainViewController.swift in Sources */,
+				9B0FA1D41D53D54C00763A77 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,10 +318,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = arithmetical/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sandoval.arithmetical;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -264,10 +332,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = arithmetical/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sandoval.arithmetical;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -290,6 +361,7 @@
 				9B0FA1BE1D53C11400763A77 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
