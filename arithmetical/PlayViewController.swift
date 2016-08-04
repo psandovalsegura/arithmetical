@@ -12,8 +12,7 @@ class PlayViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     
-    let GAMES = [["Addition", "Practice adding numbers in a timed situation"],
-                 ["Multiplication", "Multiply faster"]]
+    let games = Games.allGames
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,26 +26,37 @@ class PlayViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.GAMES.count
+        return self.games.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCellWithIdentifier("gameCell") as! GameTableViewCell
-        let game = self.GAMES[indexPath.row]
-        cell.gameLabel.text = game[0]
-        cell.descriptionLabel.text = game[1]
+        
+        let game = self.games[indexPath.row]
+        cell.gameLabel.text = game.name!
+        cell.descriptionLabel.text = game.summary!
+        cell.gameImageView?.image = game.image!
         
         return cell
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        
+        if let optionsVC = segue.destinationViewController as? InGameViewController {
+            let cellTapped = sender as! UITableViewCell
+            let indexPath = tableView.indexPathForCell(cellTapped)
+            
+            optionsVC.game = self.games[(indexPath?.row)!]
+        }
+        
     }
-    */
+    
 
 }

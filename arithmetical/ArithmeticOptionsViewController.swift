@@ -1,5 +1,5 @@
 //
-//  StatsViewController.swift
+//  ArithmeticOptionsViewController.swift
 //  arithmetical
 //
 //  Created by Pedro Sandoval Segura on 8/4/16.
@@ -8,11 +8,13 @@
 
 import UIKit
 
-class StatsViewController: UIViewController {
+class ArithmeticOptionsViewController: UIViewController {
+   
+    var game: Game?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "My Stats"
+        self.title = ""
         // Do any additional setup after loading the view.
     }
 

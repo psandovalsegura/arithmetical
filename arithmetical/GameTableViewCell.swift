@@ -20,6 +20,7 @@ class GameTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        gameImageView.contentMode = UIViewContentMode.ScaleAspectFit
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
