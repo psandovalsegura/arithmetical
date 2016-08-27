@@ -10,7 +10,7 @@ import UIKit
 
 class ArithmeticOptionsViewController: UIViewController {
    
-    var game: Game?
+    var game: ArithmeticGame?
 
     override func viewDidLoad() {
         super.viewDidLoad()

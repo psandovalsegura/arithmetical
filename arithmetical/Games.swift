@@ -14,20 +14,20 @@ class Games {
     
     
     //Add single digit numbers
-    static let singleDigitAddition: Game = Game(gameArray: ["Single Digit Addition", "Add numbers. Easy as 1 + 1.", UIImage(named: "plus")!])
+    static let singleDigitAddition: ArithmeticGame = ArithmeticGame(name: "Single Digit Addition", summary: "Add numbers. Easy as 1 + 1.", image: UIImage(named: "plus")!, number1generation: { () in return Int(arc4random_uniform(9) + 1)}, number2generation: { () in return Int(arc4random_uniform(9) + 1)}, operation: +)
     
     //Add two digit numbers
-    static let twoDigitAddition: Game = Game(gameArray: ["Double Digit Addition", "Add numbers. 23 + 15, get there.", UIImage(named: "plus")!])
+    static let twoDigitAddition: ArithmeticGame = ArithmeticGame(name: "Double Digit Addition", summary: "Add numbers. 23 + 15, get there.", image: UIImage(named: "plus")!, number1generation: { () in return Int(arc4random_uniform(90) + 10)}, number2generation: { () in return Int(arc4random_uniform(90) + 10)}, operation: +)
     
     
     //Subtract from two digit numbers
-    static let twoDigitSubtraction: Game = Game(gameArray: ["Two Digit Subtraction", "Subtract from two digit numbers. 10 - 2, try it.", UIImage(named: "minus")!])
+    static let twoDigitSubtraction: ArithmeticGame = ArithmeticGame(name: "Two Digit Subtraction", summary: "Subtract from two digit numbers. 10 - 2, try it.", image: UIImage(named: "minus")!, number1generation: { () in return Int(arc4random_uniform(40) + 60)}, number2generation: { () in return Int(arc4random_uniform(59) + 1)}, operation: -)
 
     
     //Multiply single digit numbers
-    static let singleDigitMultiplication: Game = Game(gameArray: ["Single Digit Multiplication", "Multiply numbers in a timed situation. 3 x 5, better be fast.", UIImage(named: "cross")!])
+    static let singleDigitMultiplication: ArithmeticGame = ArithmeticGame(name: "Single Digit Multiplication", summary: "Multiply numbers in a timed situation. 3 x 5, better be fast.", image: UIImage(named: "cross")!, number1generation: { () in return Int(arc4random_uniform(8) + 2)}, number2generation: { () in return Int(arc4random_uniform(8) + 2)}, operation: *)
 
     
-    static let allGames: [Game] = [Games.singleDigitAddition, Games.twoDigitAddition, Games.twoDigitSubtraction, Games.singleDigitMultiplication]
+    static let allGames: [ArithmeticGame] = [Games.singleDigitAddition, Games.twoDigitAddition, Games.twoDigitSubtraction, Games.singleDigitMultiplication]
 
 }
