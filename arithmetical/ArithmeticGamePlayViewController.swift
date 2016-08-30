@@ -1,5 +1,5 @@
 //
-//  InGameViewController.swift
+//  ArithmeticGamePlayViewController.swift
 //  arithmetical
 //
 //  Created by Pedro Sandoval Segura on 8/4/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InGameViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var number1Label: UILabel!
@@ -17,11 +17,15 @@ class InGameViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet weak var operationLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var checkmarkImageView: UIImageView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     var game: ArithmeticGame!
+    var option: String!
     var currentNumber1: Int!
     var currentNumber2: Int!
     
+    //Mark -- Timer
     var timer = NSTimer()
     let timerLimit = 120 // 120 seconds = 2 minutes
     let timerIncrement = 1
@@ -34,6 +38,7 @@ class InGameViewController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = game.name!
+        self.checkmarkImageView.hidden = true
         self.tableView.delegate = self
         self.tableView.dataSource = self
         setupOperationLabel()
@@ -41,9 +46,17 @@ class InGameViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         self.presentQuestion()
         
-        // Start the timer
-        timer = NSTimer.scheduledTimerWithTimeInterval(Double(self.timerIncrement), target: self, selector: #selector(InGameViewController.timerUpdate), userInfo: nil, repeats: true )
-        
+        if self.option == "timed" {
+            // Start the timer
+            timer = NSTimer.scheduledTimerWithTimeInterval(Double(self.timerIncrement), target: self, selector: #selector(ArithmeticGamePlayViewController.timerUpdate), userInfo: nil, repeats: true )
+            
+            //Remove the study up section of the segemented control
+            self.segmentedControl.removeSegmentAtIndex(1, animated: true)
+            self.segmentedControl.hidden = true
+        } else if self.option == "unlimited" {
+            //Hide timer label
+            self.timerLabel.hidden = true
+        }
     }
 
     
@@ -71,11 +84,12 @@ class InGameViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if game.operation(self.currentNumber1, self.currentNumber2) == Int(textField.text!) {
             self.previousQuestions.insert([String(self.currentNumber1), self.operationLabel.text!, String(self.currentNumber2), self.textField.text!], atIndex: 0) //append to the beginning of the questions array  - questions are string arrays of the format [<number1>, <operator>, <number2>, <answer>]
             
-            UIView.animateWithDuration(0.3, animations: {
-                self.tableView.reloadData()
-            })
+            //Animate the new cell that has been added to the Previous Questions
+            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+            tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
             
             correctResponses += 1
+            animateCorrectCheckmark()
             return true
         } else {
             return false
@@ -123,6 +137,16 @@ class InGameViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
 
+    func animateCorrectCheckmark() {
+        
+        UIView.animateWithDuration(0.5, animations: {
+            self.checkmarkImageView.hidden = false
+            self.checkmarkImageView.alpha = 0.0
+        }) { (finished) in
+            self.checkmarkImageView.hidden = true
+            self.checkmarkImageView.alpha = 1.0
+        }
+    }
     
     // MARK: - Navigation
 

@@ -14,6 +14,7 @@ class GameEndViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var correctResponsesLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    //Data Fields
     var studyQuestions: [[String]]?
     var correctResponses: Int?
 

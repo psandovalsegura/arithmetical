@@ -1,5 +1,5 @@
 //
-//  Game.swift
+//  ArithmeticGame.swift
 //  arithmetical
 //
 //  Created by Pedro Sandoval Segura on 8/4/16.
@@ -9,24 +9,20 @@
 import Foundation
 import UIKit
 
-class ArithmeticGame: NSObject {
+class ArithmeticGame: Game {
     
-    let name: String?
-    let summary: String?
-    let image: UIImage?
-    let number1generation: ( () -> (Int) )!
-    let number2generation: ( () -> (Int) )!
-    let operation: ( (Int, Int) -> (Int) )!
-    //let options: [String]? //Should this field move forward?
+    var number1generation: ( () -> (Int) )!
+    var number2generation: ( () -> (Int) )!
+    var operation: ( (Int, Int) -> (Int) )!
     
     
-    /* The gamesArray necessary to instantiate a Game object looks like the following:
-     *     Ex.  [name: String, summary: String, image: UIImage, options: [String]]
+    /* Instantiate a ArithmeticGame object looks like the following:
+     *     Ex.
      */
     init(name: String, summary: String, image: UIImage, number1generation: () -> (Int), number2generation: () -> (Int), operation: (Int, Int) -> (Int)) {
-        self.name = name
-        self.summary = summary
-        self.image = image
+
+        super.init(name: name, summary: summary, image: image)
+        
         self.number1generation = number1generation
         self.number2generation = number2generation
         self.operation = operation

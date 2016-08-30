@@ -17,7 +17,7 @@ class Games {
     static let singleDigitAddition: ArithmeticGame = ArithmeticGame(name: "Single Digit Addition", summary: "Add numbers. Easy as 1 + 1.", image: UIImage(named: "plus")!, number1generation: { () in return Int(arc4random_uniform(9) + 1)}, number2generation: { () in return Int(arc4random_uniform(9) + 1)}, operation: +)
     
     //Add two digit numbers
-    static let twoDigitAddition: ArithmeticGame = ArithmeticGame(name: "Double Digit Addition", summary: "Add numbers. 23 + 15, get there.", image: UIImage(named: "plus")!, number1generation: { () in return Int(arc4random_uniform(90) + 10)}, number2generation: { () in return Int(arc4random_uniform(90) + 10)}, operation: +)
+    static let twoDigitAddition: ArithmeticGame = ArithmeticGame(name: "Two Digit Addition", summary: "Add numbers. 23 + 15, get there.", image: UIImage(named: "plus")!, number1generation: { () in return Int(arc4random_uniform(90) + 10)}, number2generation: { () in return Int(arc4random_uniform(90) + 10)}, operation: +)
     
     
     //Subtract from two digit numbers
@@ -27,7 +27,11 @@ class Games {
     //Multiply single digit numbers
     static let singleDigitMultiplication: ArithmeticGame = ArithmeticGame(name: "Single Digit Multiplication", summary: "Multiply numbers in a timed situation. 3 x 5, better be fast.", image: UIImage(named: "cross")!, number1generation: { () in return Int(arc4random_uniform(8) + 2)}, number2generation: { () in return Int(arc4random_uniform(8) + 2)}, operation: *)
 
+    //Compute binary
+    static let binaryToDecimal: AnswerGame = AnswerGame(name: "Binary to Decimal", summary: "Speak computer. Go from 1101 -> 13", image: UIImage(named: "plus")!, questionGenerator: {() in return String("00101")})
     
-    static let allGames: [ArithmeticGame] = [Games.singleDigitAddition, Games.twoDigitAddition, Games.twoDigitSubtraction, Games.singleDigitMultiplication]
+    
+    static let allGames: [Game] = [Games.singleDigitAddition, Games.twoDigitAddition, Games.twoDigitSubtraction, Games.singleDigitMultiplication, Games.binaryToDecimal]
+    
 
 }
