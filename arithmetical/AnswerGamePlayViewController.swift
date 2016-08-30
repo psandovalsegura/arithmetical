@@ -22,9 +22,8 @@ class AnswerGamePlayViewController: UIViewController { //, UITableViewDelegate, 
     
     //Mark -- Timer
     var timer = NSTimer()
-    let timerLimit = 120 // 120 seconds = 2 minutes
-    let timerIncrement = 1
-    var counter = 0
+    var timerSeconds = 120 // 120 seconds = 2 minutes
+    let timerDecrement = 1
     
     var correctResponses = 0
     var previousQuestions:[[String]] = []
@@ -38,9 +37,16 @@ class AnswerGamePlayViewController: UIViewController { //, UITableViewDelegate, 
         textField.becomeFirstResponder()
         
         self.presentQuestion()
-        
-        // Start the timer
-        timer = NSTimer.scheduledTimerWithTimeInterval(Double(self.timerIncrement), target: self, selector: #selector(ArithmeticGamePlayViewController.timerUpdate), userInfo: nil, repeats: true )
+
+        if self.option == "timed" {
+            // Start the timer
+            timer = NSTimer.scheduledTimerWithTimeInterval(Double(self.timerDecrement), target: self, selector: #selector(ArithmeticGamePlayViewController.timerUpdate), userInfo: nil, repeats: true )
+            timerUpdate()
+        } else if self.option == "unlimited" {
+            //Hide timer label
+            self.timerLabel.hidden = true
+        }
+    
     }
 
     @IBAction func onInputChange(sender: AnyObject) {
@@ -62,7 +68,8 @@ class AnswerGamePlayViewController: UIViewController { //, UITableViewDelegate, 
     }
     
     func timerUpdate() {
-        if counter == timerLimit {
+        
+        if self.timerSeconds == 0 {
             timer.invalidate()
             textField.resignFirstResponder()
             textField.enabled = false
@@ -71,9 +78,8 @@ class AnswerGamePlayViewController: UIViewController { //, UITableViewDelegate, 
             self.performSegueWithIdentifier("answerGameEndSegue", sender: nil)
         }
         
-        self.timerLabel.text = String(self.counter)
-        counter += self.timerIncrement
-        
+        self.timerLabel.text = Games.stringFromTimeInterval(self.timerSeconds) as String
+        self.timerSeconds -= self.timerDecrement
     }
     
     override func didReceiveMemoryWarning() {

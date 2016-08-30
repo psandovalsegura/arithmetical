@@ -34,4 +34,11 @@ class Games {
     static let allGames: [Game] = [Games.singleDigitAddition, Games.twoDigitAddition, Games.twoDigitSubtraction, Games.singleDigitMultiplication, Games.binaryToDecimal]
     
 
+    // Mark -- Extra functionality
+    static func stringFromTimeInterval(seconds: Int) -> NSString {
+        let minutes = seconds / 60
+        let seconds = seconds % 60
+        
+        return NSString(format: "%0.2d:%0.2d",minutes,seconds)
+    }
 }
