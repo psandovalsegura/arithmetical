@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		81421DA71D710E4D00B6C59F /* PreviousQuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DA61D710E4D00B6C59F /* PreviousQuestionTableViewCell.swift */; };
-		81421DAA1D711A0000B6C59F /* GameEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DA91D711A0000B6C59F /* GameEndViewController.swift */; };
+		81421DA71D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DA61D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift */; };
+		81421DAA1D711A0000B6C59F /* ArithmeticGameEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DA91D711A0000B6C59F /* ArithmeticGameEndViewController.swift */; };
 		81421DAC1D712B1000B6C59F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DAB1D712B1000B6C59F /* Game.swift */; };
 		81421DAE1D71332A00B6C59F /* AnswerGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DAD1D71332A00B6C59F /* AnswerGame.swift */; };
+		818BD12D1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818BD12C1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift */; };
+		818BD12F1D792590002FD773 /* AnswerGameEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818BD12E1D792590002FD773 /* AnswerGameEndViewController.swift */; };
 		81DB7CB31D74D7B300729E80 /* AnswerGamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DB7CB21D74D7B300729E80 /* AnswerGamePlayViewController.swift */; };
 		9B0FA1AB1D53C11400763A77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0FA1AA1D53C11400763A77 /* AppDelegate.swift */; };
 		9B0FA1B01D53C11400763A77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B0FA1AE1D53C11400763A77 /* Main.storyboard */; };
@@ -35,10 +37,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		81421DA61D710E4D00B6C59F /* PreviousQuestionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviousQuestionTableViewCell.swift; sourceTree = "<group>"; };
-		81421DA91D711A0000B6C59F /* GameEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEndViewController.swift; sourceTree = "<group>"; };
+		81421DA61D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArithmeticGamePreviousQuestionCell.swift; sourceTree = "<group>"; };
+		81421DA91D711A0000B6C59F /* ArithmeticGameEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArithmeticGameEndViewController.swift; sourceTree = "<group>"; };
 		81421DAB1D712B1000B6C59F /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		81421DAD1D71332A00B6C59F /* AnswerGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerGame.swift; sourceTree = "<group>"; };
+		818BD12C1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerGamePreviousQuestionCell.swift; sourceTree = "<group>"; };
+		818BD12E1D792590002FD773 /* AnswerGameEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerGameEndViewController.swift; sourceTree = "<group>"; };
 		81DB7CB21D74D7B300729E80 /* AnswerGamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerGamePlayViewController.swift; sourceTree = "<group>"; };
 		9B0FA1A71D53C11400763A77 /* arithmetical.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arithmetical.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0FA1AA1D53C11400763A77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -149,7 +153,8 @@
 			isa = PBXGroup;
 			children = (
 				9B0FA1D61D53D5FE00763A77 /* GameTableViewCell.swift */,
-				81421DA61D710E4D00B6C59F /* PreviousQuestionTableViewCell.swift */,
+				81421DA61D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift */,
+				818BD12C1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -166,8 +171,9 @@
 			isa = PBXGroup;
 			children = (
 				9B0FA1E01D53F0AE00763A77 /* ArithmeticGamePlayViewController.swift */,
-				81421DA91D711A0000B6C59F /* GameEndViewController.swift */,
+				81421DA91D711A0000B6C59F /* ArithmeticGameEndViewController.swift */,
 				81DB7CB21D74D7B300729E80 /* AnswerGamePlayViewController.swift */,
+				818BD12E1D792590002FD773 /* AnswerGameEndViewController.swift */,
 			);
 			name = "Game Play";
 			sourceTree = "<group>";
@@ -257,14 +263,16 @@
 				9B0FA1DE1D53E78800763A77 /* Games.swift in Sources */,
 				9B0FA1B31D53C11400763A77 /* arithmetical.xcdatamodeld in Sources */,
 				9B0FA1E11D53F0AE00763A77 /* ArithmeticGamePlayViewController.swift in Sources */,
-				81421DAA1D711A0000B6C59F /* GameEndViewController.swift in Sources */,
+				818BD12D1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift in Sources */,
+				818BD12F1D792590002FD773 /* AnswerGameEndViewController.swift in Sources */,
+				81421DAA1D711A0000B6C59F /* ArithmeticGameEndViewController.swift in Sources */,
 				9B0FA1AB1D53C11400763A77 /* AppDelegate.swift in Sources */,
 				9B0FA1D21D53D54200763A77 /* StatsViewController.swift in Sources */,
 				81421DAC1D712B1000B6C59F /* Game.swift in Sources */,
 				9B0FA1DA1D53DA9200763A77 /* ArithmeticOptionsViewController.swift in Sources */,
 				81DB7CB31D74D7B300729E80 /* AnswerGamePlayViewController.swift in Sources */,
 				9B0FA1D01D53D51500763A77 /* MainViewController.swift in Sources */,
-				81421DA71D710E4D00B6C59F /* PreviousQuestionTableViewCell.swift in Sources */,
+				81421DA71D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift in Sources */,
 				9B0FA1D41D53D54C00763A77 /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

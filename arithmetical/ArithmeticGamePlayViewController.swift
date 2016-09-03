@@ -53,6 +53,7 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
             //Remove the study up section of the segemented control
             self.segmentedControl.removeSegmentAtIndex(1, animated: true)
             self.segmentedControl.hidden = true
+            
         } else if self.option == "unlimited" {
             //Hide timer label
             self.timerLabel.hidden = true
@@ -77,7 +78,7 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
         number1Label.text = String(self.currentNumber1)
         number2Label.text = String(self.currentNumber2)
         
-        //Update the correct count
+        //Update the correct count label
         self.correctLabel.text = String(correctResponses)
     }
     
@@ -104,7 +105,7 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
             textField.enabled = false
             
             //Segue to end game
-            self.performSegueWithIdentifier("gameEndSegue", sender: nil)
+            self.performSegueWithIdentifier("arithmeticGameEndSegue", sender: nil)
         }
         
         self.timerLabel.text = Games.stringFromTimeInterval(self.timerSeconds) as String
@@ -127,7 +128,7 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("previousQuestionCell") as! PreviousQuestionTableViewCell
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("arithmeticCell") as! ArithmeticGamePreviousQuestionCell
         cell.operationLabel.text = self.operationLabel.text
         
         let previousQuestion = self.previousQuestions[indexPath.row]
@@ -155,7 +156,7 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if let endGameVC = segue.destinationViewController as? GameEndViewController {
+        if let endGameVC = segue.destinationViewController as? ArithmeticGameEndViewController {
             endGameVC.studyQuestions = self.studyQuestions
             endGameVC.correctResponses = self.correctResponses
         }

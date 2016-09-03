@@ -1,5 +1,5 @@
 //
-//  GameEndViewController.swift
+//  ArithmeticGameEndViewController.swift
 //  arithmetical
 //
 //  Created by Pedro Sandoval on 8/26/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameEndViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ArithmeticGameEndViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var newHighscoreLabel: UILabel!
     @IBOutlet weak var correctResponsesLabel: UILabel!
@@ -43,7 +43,7 @@ class GameEndViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("previousQuestionCell") as! PreviousQuestionTableViewCell
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("previousQuestionCell") as! ArithmeticGamePreviousQuestionCell
         let question = self.studyQuestions![indexPath.row]
         cell.number1Label.text = question[0]
         cell.operationLabel.text = question[1]

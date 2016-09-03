@@ -8,13 +8,15 @@
 
 import UIKit
 
-class AnswerGamePlayViewController: UIViewController { //, UITableViewDelegate, UITableViewDataSource
+class AnswerGamePlayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var correctLabel: UILabel!
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var checkmarkImageView: UIImageView!
     
     var game: AnswerGame!
     var option: String!
@@ -27,13 +29,14 @@ class AnswerGamePlayViewController: UIViewController { //, UITableViewDelegate, 
     
     var correctResponses = 0
     var previousQuestions:[[String]] = []
-    var studyQuestions: [[String]] = []
+    var studyQuestions: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = game.name!
-        //self.tableView.delegate = self
-        //self.tableView.dataSource = self
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.checkmarkImageView.hidden = true
         textField.becomeFirstResponder()
         
         self.presentQuestion()
@@ -42,6 +45,11 @@ class AnswerGamePlayViewController: UIViewController { //, UITableViewDelegate, 
             // Start the timer
             timer = NSTimer.scheduledTimerWithTimeInterval(Double(self.timerDecrement), target: self, selector: #selector(ArithmeticGamePlayViewController.timerUpdate), userInfo: nil, repeats: true )
             timerUpdate()
+            
+            //Remove the study up section of the segemented control
+            self.segmentedControl.removeSegmentAtIndex(1, animated: true)
+            self.segmentedControl.hidden = true
+            
         } else if self.option == "unlimited" {
             //Hide timer label
             self.timerLabel.hidden = true
@@ -58,13 +66,28 @@ class AnswerGamePlayViewController: UIViewController { //, UITableViewDelegate, 
     }
     
     func presentQuestion() {
-        //testing
-        self.questionLabel.text = "2020"
+        self.currentQuestion = self.game.questionGenerator()
+        self.questionLabel.text = self.currentQuestion
+        
+        //Update the correct count label
+        self.correctLabel.text = String(correctResponses)
     }
     
     func validateAnswer() -> Bool{
-        //testing
-        return true
+        if String(Int(self.textField.text!)!, radix: 2) == self.currentQuestion {
+            
+            self.previousQuestions.insert([self.currentQuestion, self.textField.text!], atIndex: 0)
+            
+            //Animate the new cell that has been added to the Previous Questions
+            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+            tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
+            
+            self.correctResponses += 1
+            animateCorrectCheckmark()
+            return true
+        } else {
+            return false
+        }
     }
     
     func timerUpdate() {
@@ -82,11 +105,30 @@ class AnswerGamePlayViewController: UIViewController { //, UITableViewDelegate, 
         self.timerSeconds -= self.timerDecrement
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.previousQuestions.count
     }
     
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCellWithIdentifier("answerCell") as! AnswerGamePreviousQuestionCell
+        
+        let previousQuestion = self.previousQuestions[indexPath.row]
+        cell.questionLabel.text = previousQuestion[0]
+        cell.answerLabel.text = previousQuestion[1]
+        
+        return cell
+    }
+    
+    func animateCorrectCheckmark() {
+        
+        UIView.animateWithDuration(0.5, animations: {
+            self.checkmarkImageView.hidden = false
+            self.checkmarkImageView.alpha = 0.0
+        }) { (finished) in
+            self.checkmarkImageView.hidden = true
+            self.checkmarkImageView.alpha = 1.0
+        }
+    }
 
     
     // MARK: - Navigation
@@ -96,9 +138,9 @@ class AnswerGamePlayViewController: UIViewController { //, UITableViewDelegate, 
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        if let endGameVC = segue.destinationViewController as? GameEndViewController {
-            endGameVC.studyQuestions = self.studyQuestions
-            endGameVC.correctResponses = self.correctResponses
+        if let endGameVC = segue.destinationViewController as? AnswerGameEndViewController {
+            //endGameVC.studyQuestions = self.studyQuestions
+            //endGameVC.correctResponses = self.correctResponses
         }
     }
     
