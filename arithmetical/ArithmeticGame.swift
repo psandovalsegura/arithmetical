@@ -19,7 +19,7 @@ class ArithmeticGame: Game {
     /* Instantiate a ArithmeticGame object looks like the following:
      *     Ex.
      */
-    init(name: String, summary: String, image: UIImage, number1generation: () -> (Int), number2generation: () -> (Int), operation: (Int, Int) -> (Int)) {
+    init(name: String, summary: String, image: UIImage, number1generation: @escaping () -> (Int), number2generation: @escaping () -> (Int), operation: @escaping (Int, Int) -> (Int)) {
 
         super.init(name: name, summary: summary, image: image)
         

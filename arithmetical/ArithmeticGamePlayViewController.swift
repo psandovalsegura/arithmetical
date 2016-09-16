@@ -26,7 +26,7 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
     var currentNumber2: Int!
     
     //Mark -- Timer
-    var timer = NSTimer()
+    var timer = Timer()
     var timerSeconds = 120 // 120 seconds = 2 minutes
     let timerDecrement = 1
     
@@ -37,7 +37,7 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = game.name!
-        self.checkmarkImageView.hidden = true
+        self.checkmarkImageView.isHidden = true
         self.tableView.delegate = self
         self.tableView.dataSource = self
         setupOperationLabel()
@@ -47,22 +47,22 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
         
         if self.option == "timed" {
             // Start the timer
-            timer = NSTimer.scheduledTimerWithTimeInterval(Double(self.timerDecrement), target: self, selector: #selector(ArithmeticGamePlayViewController.timerUpdate), userInfo: nil, repeats: true )
+            timer = Timer.scheduledTimer(timeInterval: Double(self.timerDecrement), target: self, selector: #selector(ArithmeticGamePlayViewController.timerUpdate), userInfo: nil, repeats: true )
             timerUpdate()
             
             //Remove the study up section of the segemented control
-            self.segmentedControl.removeSegmentAtIndex(1, animated: true)
-            self.segmentedControl.hidden = true
+            self.segmentedControl.removeSegment(at: 1, animated: true)
+            self.segmentedControl.isHidden = true
             
         } else if self.option == "unlimited" {
             //Hide timer label
-            self.timerLabel.hidden = true
+            self.timerLabel.isHidden = true
         }
         
     }
 
     
-    @IBAction func onInputChange(sender: AnyObject) {
+    @IBAction func onInputChange(_ sender: AnyObject) {
         if (textField.text != "" && textField.text != nil) && validateAnswer() {
             //The user input was correct - clear field for next question
             textField.text = nil
@@ -84,11 +84,11 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
     
     func validateAnswer() -> Bool {
         if game.operation(self.currentNumber1, self.currentNumber2) == Int(textField.text!) {
-            self.previousQuestions.insert([String(self.currentNumber1), self.operationLabel.text!, String(self.currentNumber2), self.textField.text!], atIndex: 0) //append to the beginning of the questions array  - questions are string arrays of the format [<number1>, <operator>, <number2>, <answer>]
+            self.previousQuestions.insert([String(self.currentNumber1), self.operationLabel.text!, String(self.currentNumber2), self.textField.text!], at: 0) //append to the beginning of the questions array  - questions are string arrays of the format [<number1>, <operator>, <number2>, <answer>]
             
             //Animate the new cell that has been added to the Previous Questions
-            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-            tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
+            let indexPath = IndexPath(row: 0, section: 0)
+            tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.top)
             
             correctResponses += 1
             animateCorrectCheckmark()
@@ -102,10 +102,10 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
         if self.timerSeconds == 0 {
             timer.invalidate()
             textField.resignFirstResponder()
-            textField.enabled = false
+            textField.isEnabled = false
             
             //Segue to end game
-            self.performSegueWithIdentifier("arithmeticGameEndSegue", sender: nil)
+            self.performSegue(withIdentifier: "arithmeticGameEndSegue", sender: nil)
         }
         
         self.timerLabel.text = Games.stringFromTimeInterval(self.timerSeconds) as String
@@ -123,15 +123,15 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
         } 
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.previousQuestions.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("arithmeticCell") as! ArithmeticGamePreviousQuestionCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "arithmeticCell") as! ArithmeticGamePreviousQuestionCell
         cell.operationLabel.text = self.operationLabel.text
         
-        let previousQuestion = self.previousQuestions[indexPath.row]
+        let previousQuestion = self.previousQuestions[(indexPath as NSIndexPath).row]
         cell.number1Label.text = previousQuestion[0]
         cell.number2Label.text = previousQuestion[2]
         cell.answerLabel.text = previousQuestion[3]
@@ -141,22 +141,22 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
 
     func animateCorrectCheckmark() {
         
-        UIView.animateWithDuration(0.5, animations: {
-            self.checkmarkImageView.hidden = false
+        UIView.animate(withDuration: 0.5, animations: {
+            self.checkmarkImageView.isHidden = false
             self.checkmarkImageView.alpha = 0.0
-        }) { (finished) in
-            self.checkmarkImageView.hidden = true
+        }, completion: { (finished) in
+            self.checkmarkImageView.isHidden = true
             self.checkmarkImageView.alpha = 1.0
-        }
+        }) 
     }
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if let endGameVC = segue.destinationViewController as? ArithmeticGameEndViewController {
+        if let endGameVC = segue.destination as? ArithmeticGameEndViewController {
             endGameVC.studyQuestions = self.studyQuestions
             endGameVC.correctResponses = self.correctResponses
         }

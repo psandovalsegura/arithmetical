@@ -23,7 +23,7 @@ class AnswerGamePlayViewController: UIViewController, UITableViewDelegate, UITab
     var currentQuestion: String!
     
     //Mark -- Timer
-    var timer = NSTimer()
+    var timer = Timer()
     var timerSeconds = 120 // 120 seconds = 2 minutes
     let timerDecrement = 1
     
@@ -36,28 +36,28 @@ class AnswerGamePlayViewController: UIViewController, UITableViewDelegate, UITab
         self.title = game.name!
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.checkmarkImageView.hidden = true
+        self.checkmarkImageView.isHidden = true
         textField.becomeFirstResponder()
         
         self.presentQuestion()
 
         if self.option == "timed" {
             // Start the timer
-            timer = NSTimer.scheduledTimerWithTimeInterval(Double(self.timerDecrement), target: self, selector: #selector(ArithmeticGamePlayViewController.timerUpdate), userInfo: nil, repeats: true )
+            timer = Timer.scheduledTimer(timeInterval: Double(self.timerDecrement), target: self, selector: #selector(ArithmeticGamePlayViewController.timerUpdate), userInfo: nil, repeats: true )
             timerUpdate()
             
             //Remove the study up section of the segemented control
-            self.segmentedControl.removeSegmentAtIndex(1, animated: true)
-            self.segmentedControl.hidden = true
+            self.segmentedControl.removeSegment(at: 1, animated: true)
+            self.segmentedControl.isHidden = true
             
         } else if self.option == "unlimited" {
             //Hide timer label
-            self.timerLabel.hidden = true
+            self.timerLabel.isHidden = true
         }
     
     }
 
-    @IBAction func onInputChange(sender: AnyObject) {
+    @IBAction func onInputChange(_ sender: AnyObject) {
         if (textField.text != "" && textField.text != nil) && validateAnswer() {
             //The user input was correct - clear field for next question
             textField.text = nil
@@ -76,11 +76,11 @@ class AnswerGamePlayViewController: UIViewController, UITableViewDelegate, UITab
     func validateAnswer() -> Bool{
         if String(Int(self.textField.text!)!, radix: 2) == self.currentQuestion {
             
-            self.previousQuestions.insert([self.currentQuestion, self.textField.text!], atIndex: 0)
+            self.previousQuestions.insert([self.currentQuestion, self.textField.text!], at: 0)
             
             //Animate the new cell that has been added to the Previous Questions
-            let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-            tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Top)
+            let indexPath = IndexPath(row: 0, section: 0)
+            tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.top)
             
             self.correctResponses += 1
             animateCorrectCheckmark()
@@ -95,24 +95,24 @@ class AnswerGamePlayViewController: UIViewController, UITableViewDelegate, UITab
         if self.timerSeconds == 0 {
             timer.invalidate()
             textField.resignFirstResponder()
-            textField.enabled = false
+            textField.isEnabled = false
             
             //Segue to end game
-            self.performSegueWithIdentifier("answerGameEndSegue", sender: nil)
+            self.performSegue(withIdentifier: "answerGameEndSegue", sender: nil)
         }
         
         self.timerLabel.text = Games.stringFromTimeInterval(self.timerSeconds) as String
         self.timerSeconds -= self.timerDecrement
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.previousQuestions.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("answerCell") as! AnswerGamePreviousQuestionCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "answerCell") as! AnswerGamePreviousQuestionCell
         
-        let previousQuestion = self.previousQuestions[indexPath.row]
+        let previousQuestion = self.previousQuestions[(indexPath as NSIndexPath).row]
         cell.questionLabel.text = previousQuestion[0]
         cell.answerLabel.text = previousQuestion[1]
         
@@ -121,24 +121,24 @@ class AnswerGamePlayViewController: UIViewController, UITableViewDelegate, UITab
     
     func animateCorrectCheckmark() {
         
-        UIView.animateWithDuration(0.5, animations: {
-            self.checkmarkImageView.hidden = false
+        UIView.animate(withDuration: 0.5, animations: {
+            self.checkmarkImageView.isHidden = false
             self.checkmarkImageView.alpha = 0.0
-        }) { (finished) in
-            self.checkmarkImageView.hidden = true
+        }, completion: { (finished) in
+            self.checkmarkImageView.isHidden = true
             self.checkmarkImageView.alpha = 1.0
-        }
+        }) 
     }
 
     
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        if let endGameVC = segue.destinationViewController as? AnswerGameEndViewController {
+        if let endGameVC = segue.destination as? AnswerGameEndViewController {
             //endGameVC.studyQuestions = self.studyQuestions
             //endGameVC.correctResponses = self.correctResponses
         }

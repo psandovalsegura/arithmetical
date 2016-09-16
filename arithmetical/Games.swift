@@ -35,7 +35,7 @@ class Games {
     
 
     // Mark -- Extra functionality
-    static func stringFromTimeInterval(seconds: Int) -> NSString {
+    static func stringFromTimeInterval(_ seconds: Int) -> NSString {
         let minutes = seconds / 60
         let seconds = seconds % 60
         

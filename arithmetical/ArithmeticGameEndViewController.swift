@@ -35,16 +35,16 @@ class ArithmeticGameEndViewController: UIViewController, UITableViewDelegate, UI
     
     func checkScore() {
         //Check if this is a new highscore
-        self.newHighscoreLabel.hidden = true
+        self.newHighscoreLabel.isHidden = true
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (self.studyQuestions?.count)!
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("previousQuestionCell") as! ArithmeticGamePreviousQuestionCell
-        let question = self.studyQuestions![indexPath.row]
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "previousQuestionCell") as! ArithmeticGamePreviousQuestionCell
+        let question = self.studyQuestions![(indexPath as NSIndexPath).row]
         cell.number1Label.text = question[0]
         cell.operationLabel.text = question[1]
         cell.number2Label.text = question[2]

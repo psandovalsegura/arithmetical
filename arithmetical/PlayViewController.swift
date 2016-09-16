@@ -14,7 +14,7 @@ class PlayViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     let games = Games.allGames
     var chosenGame: Game?
-    var selectedIndexPath: NSIndexPath?
+    var selectedIndexPath: IndexPath?
     var option: String?
 
     override func viewDidLoad() {
@@ -28,50 +28,50 @@ class PlayViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func selectedTimedGame(sender: AnyObject) {
+    @IBAction func selectedTimedGame(_ sender: AnyObject) {
         //Figure out which cell was tapped
-        let buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.tableView)
-        let indexPath = self.tableView.indexPathForRowAtPoint(buttonPosition)
-        let selectedGame = self.games[indexPath!.row]
+        let buttonPosition: CGPoint = sender.convert(CGPoint.zero, to: self.tableView)
+        let indexPath = self.tableView.indexPathForRow(at: buttonPosition)
+        let selectedGame = self.games[(indexPath! as NSIndexPath).row]
         
         //Check what type of game was selected
         if let arithmeticGame = selectedGame as? ArithmeticGame {
             self.chosenGame = arithmeticGame
             self.option = "timed"
-            self.performSegueWithIdentifier("toArithmeticGame", sender: nil)
+            self.performSegue(withIdentifier: "toArithmeticGame", sender: nil)
         } else if let answerGame = selectedGame as? AnswerGame {
             self.chosenGame = answerGame
             self.option = "timed"
-            self.performSegueWithIdentifier("toAnswerGame", sender: nil)
+            self.performSegue(withIdentifier: "toAnswerGame", sender: nil)
         }
     }
     
-    @IBAction func selectedUnlimitedGame(sender: AnyObject) {
+    @IBAction func selectedUnlimitedGame(_ sender: AnyObject) {
         //Figure out which cell was tapped
-        let buttonPosition: CGPoint = sender.convertPoint(CGPointZero, toView: self.tableView)
-        let indexPath = self.tableView.indexPathForRowAtPoint(buttonPosition)
-        let selectedGame = self.games[indexPath!.row]
+        let buttonPosition: CGPoint = sender.convert(CGPoint.zero, to: self.tableView)
+        let indexPath = self.tableView.indexPathForRow(at: buttonPosition)
+        let selectedGame = self.games[(indexPath! as NSIndexPath).row]
         
         //Check what type of game was selected
         if let arithmeticGame = selectedGame as? ArithmeticGame {
             self.chosenGame = arithmeticGame
             self.option = "unlimited"
-            self.performSegueWithIdentifier("toArithmeticGame", sender: nil)
+            self.performSegue(withIdentifier: "toArithmeticGame", sender: nil)
         } else if let answerGame = selectedGame as? AnswerGame {
             self.chosenGame = answerGame
             self.option = "unlimited"
-            self.performSegueWithIdentifier("toAnswerGame", sender: nil)
+            self.performSegue(withIdentifier: "toAnswerGame", sender: nil)
         }
     }
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.games.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCellWithIdentifier("gameCell") as! GameTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "gameCell") as! GameTableViewCell
         
-        let game = self.games[indexPath.row]
+        let game = self.games[(indexPath as NSIndexPath).row]
         cell.gameLabel.text = game.name!
         cell.descriptionLabel.text = game.summary!
         cell.gameImageView?.image = game.image!
@@ -79,7 +79,7 @@ class PlayViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Update the selected indexPath to shrink or expand the size of the game cell
         switch selectedIndexPath {
         case nil:
@@ -94,10 +94,10 @@ class PlayViewController: UIViewController, UITableViewDelegate, UITableViewData
                 selectedIndexPath = indexPath
             }
         }
-        tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.selectedIndexPath == indexPath {
             return 128
         } else {
@@ -110,17 +110,17 @@ class PlayViewController: UIViewController, UITableViewDelegate, UITableViewData
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
         //Segue to the corresponding game view controller
         if segue.identifier == "toArithmeticGame" {
-            let arithmeticVC = segue.destinationViewController as! ArithmeticGamePlayViewController
+            let arithmeticVC = segue.destination as! ArithmeticGamePlayViewController
             arithmeticVC.game = self.chosenGame as! ArithmeticGame
             arithmeticVC.option = self.option
         } else if segue.identifier == "toAnswerGame" {
-            let answerVC = segue.destinationViewController as! AnswerGamePlayViewController
+            let answerVC = segue.destination as! AnswerGamePlayViewController
             answerVC.game = self.chosenGame as! AnswerGame
             answerVC.option = self.option
         }

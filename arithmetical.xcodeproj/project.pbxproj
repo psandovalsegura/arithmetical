@@ -211,6 +211,7 @@
 					9B0FA1A61D53C11400763A77 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 5HLDUZFLDY;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -393,6 +394,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sandoval.arithmetical;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -407,6 +409,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sandoval.arithmetical;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
