@@ -27,11 +27,6 @@ class ArithmeticGameEndViewController: UIViewController, UITableViewDelegate, UI
         
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     func checkScore() {
         //Check if this is a new highscore
@@ -43,7 +38,7 @@ class ArithmeticGameEndViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "previousQuestionCell") as! ArithmeticGamePreviousQuestionCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "arithmeticCell") as! ArithmeticGamePreviousQuestionCell
         let question = self.studyQuestions![(indexPath as NSIndexPath).row]
         cell.number1Label.text = question[0]
         cell.operationLabel.text = question[1]

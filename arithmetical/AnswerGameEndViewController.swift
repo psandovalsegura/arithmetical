@@ -8,21 +8,42 @@
 
 import UIKit
 
-class AnswerGameEndViewController: UIViewController {
+class AnswerGameEndViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var newHighscoreLabel: UILabel!
     @IBOutlet weak var correctResponsesLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
+    //Data Fields
+    var studyQuestions: [[String]]?
+    var correctResponses: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.correctResponsesLabel.text = String(correctResponses!)
+        checkScore()
+        
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func checkScore() {
+        //Check if this is a new highscore
+        self.newHighscoreLabel.isHidden = true
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0 //(self.studyQuestions?.count)!
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "answerCell") as! AnswerGamePreviousQuestionCell
+        let question = self.studyQuestions![(indexPath as NSIndexPath).row]
+        cell.questionLabel.text = question[1]
+        cell.answerLabel.text = question[3]
+        
+        return cell
     }
     
 
