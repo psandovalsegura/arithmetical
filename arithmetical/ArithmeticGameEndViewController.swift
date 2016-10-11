@@ -17,7 +17,8 @@ class ArithmeticGameEndViewController: UIViewController, UITableViewDelegate, UI
     //Data Fields
     var studyQuestions: [[String]]?
     var correctResponses: Int?
-
+    var game: ArithmeticGame?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
@@ -30,7 +31,16 @@ class ArithmeticGameEndViewController: UIViewController, UITableViewDelegate, UI
     
     func checkScore() {
         //Check if this is a new highscore
-        self.newHighscoreLabel.isHidden = true
+        let previousHighscore = UserDefaults.standard.integer(forKey: "\(self.game!.name)_highscore")
+        
+        if (correctResponses! > previousHighscore) {
+            self.newHighscoreLabel.isHidden = false
+            UserDefaults.standard.set(correctResponses!, forKey: "\(self.game!.name)_highscore")
+            
+        }
+        else {
+            self.newHighscoreLabel.isHidden = true
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,15 +58,15 @@ class ArithmeticGameEndViewController: UIViewController, UITableViewDelegate, UI
         return cell
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

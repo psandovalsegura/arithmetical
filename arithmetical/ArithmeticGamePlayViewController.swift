@@ -159,6 +159,7 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
         if let endGameVC = segue.destination as? ArithmeticGameEndViewController {
             endGameVC.studyQuestions = self.studyQuestions
             endGameVC.correctResponses = self.correctResponses
+            endGameVC.game = game
         }
     }
     
