@@ -8,4 +8,4 @@
 - Complex numbers to polar/exponential form
 
 # Example: Arithmetic games
-<img src='http://i.imgur.com/vn4gycD.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/OLQSHuK.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
