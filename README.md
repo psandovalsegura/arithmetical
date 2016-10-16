@@ -8,4 +8,7 @@
 - Complex numbers to polar/exponential form
 
 # Example: Arithmetic games
-<img src='http://i.imgur.com/OLQSHuK.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![Single-Digit-Addition](http://i.imgur.com/RPEmywN.png)
+
+# Example: Answer games
+![Binary-to-Decimal](http://i.imgur.com/mTsyp6l.png)
