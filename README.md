@@ -6,3 +6,6 @@
 - Prime factorization
 - Trigonometric identities
 - Complex numbers to polar/exponential form
+
+# Example: Arithmetic games
+<img src='http://i.imgur.com/vn4gycD.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />

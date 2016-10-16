@@ -17,14 +17,13 @@ class ArithmeticGameEndViewController: UIViewController, UITableViewDelegate, UI
     //Data Fields
     var studyQuestions: [[String]]?
     var correctResponses: Int?
-    var game: ArithmeticGame?
+    var game: ArithmeticGame!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.correctResponsesLabel.text = String(correctResponses!)
-        //checkScore()
         
         // Do any additional setup after loading the view.
     }
@@ -36,7 +35,7 @@ class ArithmeticGameEndViewController: UIViewController, UITableViewDelegate, UI
     
     func checkScore() {
         //Check if this is a new highscore
-        let previousHighscore = UserDefaults.standard.integer(forKey: "\(self.game!.name)_highscore")
+        let previousHighscore = UserDefaults.standard.integer(forKey: "\(self.game.name!)_highscore")
         
         if (correctResponses! > previousHighscore) {
             self.newHighscoreLabel.isHidden = false
@@ -44,7 +43,7 @@ class ArithmeticGameEndViewController: UIViewController, UITableViewDelegate, UI
                 var highscoreArray = [String]()
                 highscoreArray.append(String(self.correctResponses!))
                 highscoreArray.append(name)
-                UserDefaults.standard.set(highscoreArray, forKey: "\(self.game!.name!)_highscore")
+                UserDefaults.standard.set(highscoreArray, forKey: "\(self.game.name!)_highscore")
             })
         } else {
             self.newHighscoreLabel.isHidden = true

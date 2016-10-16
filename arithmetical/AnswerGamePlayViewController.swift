@@ -24,12 +24,12 @@ class AnswerGamePlayViewController: UIViewController, UITableViewDelegate, UITab
     
     //Mark -- Timer
     var timer = Timer()
-    var timerSeconds = 120 // 120 seconds = 2 minutes
+    var timerSeconds = 10 // 120 seconds = 2 minutes
     let timerDecrement = 1
     
     var correctResponses = 0
     var previousQuestions:[[String]] = []
-    var studyQuestions: [String] = []
+    var studyQuestions: [[String]] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,8 +139,9 @@ class AnswerGamePlayViewController: UIViewController, UITableViewDelegate, UITab
         // Pass the selected object to the new view controller.
         
         if let endGameVC = segue.destination as? AnswerGameEndViewController {
-            //endGameVC.studyQuestions = self.studyQuestions
-            //endGameVC.correctResponses = self.correctResponses
+            endGameVC.studyQuestions = self.studyQuestions
+            endGameVC.correctResponses = self.correctResponses
+            endGameVC.game = game
         }
     }
     
