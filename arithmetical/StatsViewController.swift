@@ -33,7 +33,12 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
         cell.gameImageView.image = currentGame.image!
         cell.gameLabel.text = currentGame.name!
-        cell.highScore.text = String(UserDefaults.standard.integer(forKey: "\(currentGame.name)_highscore"))
+        
+        if let highscoreArray = UserDefaults.standard.stringArray(forKey: "\(currentGame.name!)_highscore") {
+            cell.highscoreLabel.text = highscoreArray[0]
+            cell.playerLabel.text = highscoreArray[1]
+        }
+        
         return cell
     }
     

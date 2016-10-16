@@ -10,9 +10,11 @@ import UIKit
 
 class TopScoresTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var highScore: UILabel!
+    @IBOutlet weak var highscoreLabel: UILabel!
+    @IBOutlet weak var playerLabel: UILabel!
     @IBOutlet weak var gameLabel: UILabel!
     @IBOutlet weak var gameImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

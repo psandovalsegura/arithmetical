@@ -27,7 +27,7 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
     
     //Mark -- Timer
     var timer = Timer()
-    var timerSeconds = 120 // 120 seconds = 2 minutes
+    var timerSeconds = 5 // 120 seconds = 2 minutes
     let timerDecrement = 1
     
     var correctResponses = 0

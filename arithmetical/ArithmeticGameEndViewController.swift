@@ -24,9 +24,14 @@ class ArithmeticGameEndViewController: UIViewController, UITableViewDelegate, UI
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.correctResponsesLabel.text = String(correctResponses!)
-        checkScore()
+        //checkScore()
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkScore()
     }
     
     func checkScore() {
@@ -35,12 +40,33 @@ class ArithmeticGameEndViewController: UIViewController, UITableViewDelegate, UI
         
         if (correctResponses! > previousHighscore) {
             self.newHighscoreLabel.isHidden = false
-            UserDefaults.standard.set(correctResponses!, forKey: "\(self.game!.name)_highscore")
-            
-        }
-        else {
+            getPlayerName(completion: { (name) in
+                var highscoreArray = [String]()
+                highscoreArray.append(String(self.correctResponses!))
+                highscoreArray.append(name)
+                UserDefaults.standard.set(highscoreArray, forKey: "\(self.game!.name!)_highscore")
+            })
+        } else {
             self.newHighscoreLabel.isHidden = true
         }
+    }
+    
+    func getPlayerName(completion: @escaping (String) -> Void) {
+        let alert = UIAlertController(title: "New Highscore!", message: "What's your name?", preferredStyle: .alert)
+        
+        //Add text field
+        alert.addTextField { (textField) in
+            textField.text = "SS 2016"
+        }
+        
+        //Get player name from text field
+        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { (_) in
+            let textField = alert.textFields![0] // Force unwrapping because we know it exists.
+            completion(textField.text!)
+        }))
+        
+        //Present alert input field
+        self.present(alert, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
