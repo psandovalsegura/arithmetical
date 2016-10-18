@@ -34,8 +34,13 @@ class ArithmeticGameEndViewController: UIViewController, UITableViewDelegate, UI
     }
     
     func checkScore() {
+        //Default previous highscore
+        var previousHighscore = 0
+        
         //Check if this is a new highscore
-        let previousHighscore = UserDefaults.standard.integer(forKey: "\(self.game.name!)_highscore")
+        if let highscoreArray = UserDefaults.standard.stringArray(forKey: "\(self.game.name!)_highscore") {
+            previousHighscore = Int(highscoreArray[0])!
+        }
         
         if (correctResponses! > previousHighscore) {
             self.newHighscoreLabel.isHidden = false
@@ -43,6 +48,7 @@ class ArithmeticGameEndViewController: UIViewController, UITableViewDelegate, UI
                 var highscoreArray = [String]()
                 highscoreArray.append(String(self.correctResponses!))
                 highscoreArray.append(name)
+                User.saveName(name: name)
                 UserDefaults.standard.set(highscoreArray, forKey: "\(self.game.name!)_highscore")
             })
         } else {
@@ -55,7 +61,7 @@ class ArithmeticGameEndViewController: UIViewController, UITableViewDelegate, UI
         
         //Add text field
         alert.addTextField { (textField) in
-            textField.text = "SS 2016"
+            textField.text = User.getName()
         }
         
         //Get player name from text field

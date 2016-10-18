@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		812C5FFF1D8CD6E7005A6EFD /* TopScoresTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812C5FFE1D8CD6E7005A6EFD /* TopScoresTableViewCell.swift */; };
+		8133EA281DB622B200DAECF1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8133EA271DB622B200DAECF1 /* User.swift */; };
 		81421DA71D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DA61D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift */; };
 		81421DAA1D711A0000B6C59F /* ArithmeticGameEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DA91D711A0000B6C59F /* ArithmeticGameEndViewController.swift */; };
 		81421DAC1D712B1000B6C59F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DAB1D712B1000B6C59F /* Game.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		812C5FFE1D8CD6E7005A6EFD /* TopScoresTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopScoresTableViewCell.swift; sourceTree = "<group>"; };
+		8133EA271DB622B200DAECF1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		81421DA61D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArithmeticGamePreviousQuestionCell.swift; sourceTree = "<group>"; };
 		81421DA91D711A0000B6C59F /* ArithmeticGameEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArithmeticGameEndViewController.swift; sourceTree = "<group>"; };
 		81421DAB1D712B1000B6C59F /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				81421DAB1D712B1000B6C59F /* Game.swift */,
 				9B0FA1DB1D53E5DE00763A77 /* ArithmeticGame.swift */,
 				81421DAD1D71332A00B6C59F /* AnswerGame.swift */,
+				8133EA271DB622B200DAECF1 /* User.swift */,
 			);
 			name = "Data Models";
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				9B0FA1B31D53C11400763A77 /* arithmetical.xcdatamodeld in Sources */,
 				9B0FA1E11D53F0AE00763A77 /* ArithmeticGamePlayViewController.swift in Sources */,
 				818BD12D1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift in Sources */,
+				8133EA281DB622B200DAECF1 /* User.swift in Sources */,
 				818BD12F1D792590002FD773 /* AnswerGameEndViewController.swift in Sources */,
 				81421DAA1D711A0000B6C59F /* ArithmeticGameEndViewController.swift in Sources */,
 				9B0FA1AB1D53C11400763A77 /* AppDelegate.swift in Sources */,

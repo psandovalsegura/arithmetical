@@ -11,7 +11,7 @@ import UIKit
 
 class Games {
     //The Container class for the possible games that can be played
-    
+    static let timerSeconds = 20
     
     //Add single digit numbers
     static let singleDigitAddition: ArithmeticGame = ArithmeticGame(name: "Single Digit Addition", summary: "Add numbers. Easy as 1 + 1.", image: UIImage(named: "plus")!, number1generation: { () in return Int(arc4random_uniform(9) + 1)}, number2generation: { () in return Int(arc4random_uniform(9) + 1)}, operation: +)
