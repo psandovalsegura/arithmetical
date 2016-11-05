@@ -150,6 +150,10 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
         }) 
     }
     
+    @IBAction func onTap(_ sender: AnyObject) {
+        self.view.endEditing(true)
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -130,6 +130,9 @@ class AnswerGamePlayViewController: UIViewController, UITableViewDelegate, UITab
         }) 
     }
 
+    @IBAction func onTap(_ sender: AnyObject) {
+        self.view.endEditing(true)
+    }
     
     // MARK: - Navigation
 

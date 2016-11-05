@@ -34,16 +34,7 @@ class PlayViewController: UIViewController, UITableViewDelegate, UITableViewData
         let indexPath = self.tableView.indexPathForRow(at: buttonPosition)
         let selectedGame = self.games[(indexPath! as NSIndexPath).row]
         
-        //Check what type of game was selected
-        if let arithmeticGame = selectedGame as? ArithmeticGame {
-            self.chosenGame = arithmeticGame
-            self.option = "timed"
-            self.performSegue(withIdentifier: "toArithmeticGame", sender: nil)
-        } else if let answerGame = selectedGame as? AnswerGame {
-            self.chosenGame = answerGame
-            self.option = "timed"
-            self.performSegue(withIdentifier: "toAnswerGame", sender: nil)
-        }
+        configureSelectedGame(game: selectedGame, as: "timed")
     }
     
     @IBAction func selectedUnlimitedGame(_ sender: AnyObject) {
@@ -52,15 +43,23 @@ class PlayViewController: UIViewController, UITableViewDelegate, UITableViewData
         let indexPath = self.tableView.indexPathForRow(at: buttonPosition)
         let selectedGame = self.games[(indexPath! as NSIndexPath).row]
         
+        configureSelectedGame(game: selectedGame, as: "unlimited")
+    }
+    
+    func configureSelectedGame(game: Game, as option: String) {
         //Check what type of game was selected
-        if let arithmeticGame = selectedGame as? ArithmeticGame {
+        if let arithmeticGame = game as? ArithmeticGame {
             self.chosenGame = arithmeticGame
-            self.option = "unlimited"
+            self.option = option
             self.performSegue(withIdentifier: "toArithmeticGame", sender: nil)
-        } else if let answerGame = selectedGame as? AnswerGame {
+        } else if let answerGame = game as? AnswerGame {
             self.chosenGame = answerGame
-            self.option = "unlimited"
+            self.option = option
             self.performSegue(withIdentifier: "toAnswerGame", sender: nil)
+        } else if let dragGame = game as? DragGame {
+            self.chosenGame = dragGame
+            self.option = option
+            self.performSegue(withIdentifier: "toDragGame", sender: nil)
         }
     }
 
@@ -123,6 +122,10 @@ class PlayViewController: UIViewController, UITableViewDelegate, UITableViewData
             let answerVC = segue.destination as! AnswerGamePlayViewController
             answerVC.game = self.chosenGame as! AnswerGame
             answerVC.option = self.option
+        } else if segue.identifier == "toDragGame" {
+            let dragVC = segue.destination as! DragGamePlayViewController
+            dragVC.game = self.chosenGame as! DragGame
+            dragVC.option = self.option
         }
     }
     

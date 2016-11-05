@@ -2,10 +2,11 @@
 
 **Arithmetical** is a math app built for students. It currently contains games for arithmetic and binary to decimal conversions. Upcoming games include:
 
-- Unit circle conversions
 - Prime factorization
+- Unit circle conversions
 - Trigonometric identities
 - Complex numbers to polar/exponential form
+- Matrix games
 
 # Example: Arithmetic games
 ![Single-Digit-Addition](http://i.imgur.com/RPEmywN.png)
