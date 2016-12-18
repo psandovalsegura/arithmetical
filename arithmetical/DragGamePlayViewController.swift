@@ -53,9 +53,6 @@ class DragGamePlayViewController: UIViewController {
     func presentQuestion() {
         //Ensure the number is composite
         self.mainNumber = self.game.mainNumberGenerator()
-        while isPrime(number: self.mainNumber!) {
-            self.mainNumber = self.game.mainNumberGenerator()
-        }
     }
 
     func validateAnswer() -> Bool {
@@ -65,6 +62,7 @@ class DragGamePlayViewController: UIViewController {
         return false
     }
     
+    //Deprecated
     func isPrime(number: Int) -> Bool {
         //Check numbers up to the square root of the number
         
@@ -115,7 +113,7 @@ class DragGamePlayViewController: UIViewController {
                 animatePrimeFalling()
             } else {
                 //Update the main number
-                self.mainNumberScale -= 0.2
+                self.mainNumberScale -= 0.1
                 self.mainNumber = self.mainNumber! / Int(self.newPrime.text!)!
                 
                 //Check if the number has been completely factored
@@ -125,7 +123,7 @@ class DragGamePlayViewController: UIViewController {
                     resetView()
                     self.presentQuestion()
                 } else {
-                    UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 1, options: [], animations: {
+                    UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 10, options: [], animations: {
                         self.mainNumberLabel.transform = CGAffineTransform(scaleX: CGFloat(self.mainNumberScale), y: CGFloat(self.mainNumberScale))
                     }, completion: { (done) in
                         //

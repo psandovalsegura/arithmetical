@@ -33,7 +33,16 @@ class Games {
     static let binaryToDecimal: AnswerGame = AnswerGame(name: "Binary to Decimal", summary: "Speak computer. Go from 1101 to 13", image: UIImage(named: "plus")!, questionGenerator: {() in return String(Int(arc4random_uniform(63) + 1), radix: 2)})
     
     //Prime factorization
-    static let primeFactorization: DragGame = DragGame(name: "Prime Factorization", summary: "Practice factoring numbers into primes.", image: UIImage(named: "star")!, numberGenerator: {() in return Int(arc4random_uniform(99) + 1)})
+    static let primeFactorization: DragGame = DragGame(name: "Prime Factorization", summary: "Practice factoring numbers into primes.", image: UIImage(named: "star")!, numberGenerator: {() in
+        let numberOfFactors = Int(arc4random_uniform(4) + 2) // generated number should have 2 to 5 factors
+        let tray = [2,3,5,7,9,13,17,19]
+        var factors: [Int] = []
+        for _ in 1...numberOfFactors {
+            let chosenIndex = Int(arc4random_uniform(UInt32(tray.count)))
+            factors.append(tray[chosenIndex])
+        }
+        //Create a product of the chosen factors
+        return factors.reduce(1, *)})
     
     static let allGames: [Game] = [Games.singleDigitAddition, Games.twoDigitAddition, Games.twoDigitSubtraction, Games.singleDigitMultiplication, Games.binaryToDecimal, Games.primeFactorization]
     
