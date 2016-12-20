@@ -15,6 +15,7 @@ class DragGamePlayViewController: UIViewController {
     var currentNumber: String!
     @IBOutlet weak var checkmarkImageView: UIImageView!
     @IBOutlet weak var correctLabel: UILabel!
+    @IBOutlet weak var trayView: UIView!
     
     //Mark -- Timer
     var timer = Timer()
@@ -169,7 +170,7 @@ class DragGamePlayViewController: UIViewController {
     
     //Returns true if position is valid (above tray), false otherwise
     func validPrimePosition() -> Bool {
-        if self.newPrime.center.y >= 450 {
+        if self.newPrime.center.y >= self.trayView.frame.minY {
             return false
         } else {
             return true

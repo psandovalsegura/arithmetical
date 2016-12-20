@@ -33,9 +33,9 @@ class Games {
     static let binaryToDecimal: AnswerGame = AnswerGame(name: "Binary to Decimal", summary: "Speak computer. Go from 1101 to 13", image: UIImage(named: "plus")!, questionGenerator: {() in return String(Int(arc4random_uniform(63) + 1), radix: 2)})
     
     //Prime factorization
-    static let primeFactorization: DragGame = DragGame(name: "Prime Factorization", summary: "Practice factoring numbers into primes.", image: UIImage(named: "star")!, numberGenerator: {() in
+    static let primeFactorization: DragGame = DragGame(name: "Prime Factorization", summary: "Factor numbers into primes by dragging factors into the main number.", image: UIImage(named: "star")!, numberGenerator: {() in
         let numberOfFactors = Int(arc4random_uniform(4) + 2) // generated number should have 2 to 5 factors
-        let tray = [2,3,5,7,9,13,17,19]
+        let tray = [2,3,5,7,11]
         var factors: [Int] = []
         for _ in 1...numberOfFactors {
             let chosenIndex = Int(arc4random_uniform(UInt32(tray.count)))
