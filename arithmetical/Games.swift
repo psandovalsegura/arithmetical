@@ -44,7 +44,13 @@ class Games {
         //Create a product of the chosen factors
         return factors.reduce(1, *)})
     
-    static let allGames: [Game] = [Games.singleDigitAddition, Games.twoDigitAddition, Games.twoDigitSubtraction, Games.singleDigitMultiplication, Games.binaryToDecimal, Games.primeFactorization]
+    //Unit circle
+    static let unitCircleRadians = ButtonGame(name: "Unit Circle Radians", summary: "If you remember the main radian angles, the rest of the circle is trivial.", image: UIImage(named: "circle")!, mainPromptGenerator: { () in
+        let radianValues = ["0", "pi/6"]
+        return "-"
+    })
+    
+    static let allGames: [Game] = [Games.singleDigitAddition, Games.twoDigitAddition, Games.twoDigitSubtraction, Games.singleDigitMultiplication, Games.binaryToDecimal, Games.primeFactorization, Games.unitCircleRadians]
     
 
     // Mark -- Extra functionality
@@ -52,6 +58,6 @@ class Games {
         let minutes = seconds / 60
         let seconds = seconds % 60
         
-        return NSString(format: "%0.2d:%0.2d",minutes,seconds)
+        return NSString(format: "%0.2d:%0.2d", minutes, seconds)
     }
 }

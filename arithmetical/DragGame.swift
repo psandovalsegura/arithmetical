@@ -13,7 +13,7 @@ class DragGame: Game {
     
     var mainNumberGenerator: ( () -> (Int) )!
     
-    /* Instantiate a AnswerGame object looks like the following:
+    /* Instantiate a DragGame object looks like the following:
      *     Ex.
      */
     init(name: String, summary: String, image: UIImage, numberGenerator: @escaping () -> (Int)) {

@@ -10,12 +10,14 @@ import UIKit
 
 class DragGamePlayViewController: UIViewController {
     
-    var game: DragGame!
-    var option: String!
-    var currentNumber: String!
+    @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var checkmarkImageView: UIImageView!
     @IBOutlet weak var correctLabel: UILabel!
     @IBOutlet weak var trayView: UIView!
+    
+    var game: DragGame!
+    var option: String!
+    var currentNumber: String!
     
     //Mark -- Timer
     var timer = Timer()
