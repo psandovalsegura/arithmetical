@@ -60,6 +60,10 @@ class PlayViewController: UIViewController, UITableViewDelegate, UITableViewData
             self.chosenGame = dragGame
             self.option = option
             self.performSegue(withIdentifier: "toDragGame", sender: nil)
+        } else if let buttonGame = game as? ButtonGame {
+            self.chosenGame = buttonGame
+            self.option = option
+            self.performSegue(withIdentifier: "toButtonGame", sender: nil)
         }
     }
 
@@ -126,6 +130,10 @@ class PlayViewController: UIViewController, UITableViewDelegate, UITableViewData
             let dragVC = segue.destination as! DragGamePlayViewController
             dragVC.game = self.chosenGame as! DragGame
             dragVC.option = self.option
+        } else if segue.identifier == "toButtonGame" {
+            let buttonVC = segue.destination as! ButtonGamePlayViewController
+            buttonVC.game = self.chosenGame as! ButtonGame
+            buttonVC.option = self.option
         }
     }
     

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		810EF30D1E14D19D0047AAB7 /* ButtonGamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810EF30C1E14D19D0047AAB7 /* ButtonGamePlayViewController.swift */; };
 		810EF30F1E14D32A0047AAB7 /* ButtonGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810EF30E1E14D32A0047AAB7 /* ButtonGame.swift */; };
+		810EF3111E160A9D0047AAB7 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810EF3101E160A9D0047AAB7 /* UIViewExtension.swift */; };
 		812C5FFF1D8CD6E7005A6EFD /* TopScoresTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812C5FFE1D8CD6E7005A6EFD /* TopScoresTableViewCell.swift */; };
 		8133EA281DB622B200DAECF1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8133EA271DB622B200DAECF1 /* User.swift */; };
 		81421DA71D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DA61D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		810EF30C1E14D19D0047AAB7 /* ButtonGamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonGamePlayViewController.swift; sourceTree = "<group>"; };
 		810EF30E1E14D32A0047AAB7 /* ButtonGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonGame.swift; sourceTree = "<group>"; };
+		810EF3101E160A9D0047AAB7 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		812C5FFE1D8CD6E7005A6EFD /* TopScoresTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopScoresTableViewCell.swift; sourceTree = "<group>"; };
 		8133EA271DB622B200DAECF1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		81421DA61D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArithmeticGamePreviousQuestionCell.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				9B0FA1C31D53CF2700763A77 /* SanFranciscoText-Medium.otf */,
 				9B0FA1C41D53CF2700763A77 /* SanFranciscoText-Regular.otf */,
 				9B0FA1C51D53CF2700763A77 /* SanFranciscoText-Semibold.otf */,
+				810EF3101E160A9D0047AAB7 /* UIViewExtension.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				810EF30F1E14D32A0047AAB7 /* ButtonGame.swift in Sources */,
 				812C5FFF1D8CD6E7005A6EFD /* TopScoresTableViewCell.swift in Sources */,
 				81DB7CB31D74D7B300729E80 /* AnswerGamePlayViewController.swift in Sources */,
+				810EF3111E160A9D0047AAB7 /* UIViewExtension.swift in Sources */,
 				9B0FA1D01D53D51500763A77 /* MainViewController.swift in Sources */,
 				810EF30D1E14D19D0047AAB7 /* ButtonGamePlayViewController.swift in Sources */,
 				81421DA71D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift in Sources */,

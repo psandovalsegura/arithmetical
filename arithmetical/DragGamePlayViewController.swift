@@ -37,6 +37,7 @@ class DragGamePlayViewController: UIViewController {
             self.mainNumberLabel.text = String(mainNumber!)
         }
     }
+    
     @IBOutlet weak var mainNumberLabel: UILabel!
     var newPrime: UILabel!
     var mainNumberScale = 1.0
@@ -44,11 +45,12 @@ class DragGamePlayViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = game.name!
         
         // Do any additional setup after loading the view.
+        self.title = self.game.name!
         self.correctLabel.text = String(self.correctResponses)
         self.presentQuestion()
+        
     }
     
     
@@ -121,11 +123,13 @@ class DragGamePlayViewController: UIViewController {
                 
                 //Check if the number has been completely factored
                 if self.mainNumber == 1 {
+                    //Factoring complete: reset the main number label scale
                     animateCorrectCheckmark()
                     correctResponses += 1
                     resetView()
                     self.presentQuestion()
                 } else {
+                    //More primes necessary: the number shrinks
                     UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 10, options: [], animations: {
                         self.mainNumberLabel.transform = CGAffineTransform(scaleX: CGFloat(self.mainNumberScale), y: CGFloat(self.mainNumberScale))
                     }, completion: { (done) in
@@ -191,14 +195,4 @@ class DragGamePlayViewController: UIViewController {
     }
     */
 
-}
-
-extension UIView {
-    func shake() {
-        let animation = CAKeyframeAnimation(keyPath: "transform.translation.x")
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        animation.duration = 0.4
-        animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
-        layer.add(animation, forKey: "shake")
-    }
 }

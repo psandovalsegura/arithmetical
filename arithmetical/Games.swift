@@ -45,10 +45,7 @@ class Games {
         return factors.reduce(1, *)})
     
     //Unit circle
-    static let unitCircleRadians = ButtonGame(name: "Unit Circle Radians", summary: "If you remember the main radian angles, the rest of the circle is trivial.", image: UIImage(named: "circle")!, mainPromptGenerator: { () in
-        let radianValues = ["0", "pi/6"]
-        return "-"
-    })
+    static let unitCircleRadians = ButtonGame(name: "Unit Circle: Radians", summary: "Memorize where each radian value lies on the unit circle!", image: UIImage(named: "circle")!, selectionDictionary: ["2π": 0, "π/6": 1, "π/4": 2, "π/3": 3 , "π/2": 4, "2π/3": 5, "3π/4": 6, "5π/6": 7, "π": 8, "7π/6": 9, "5π/4": 10, "4π/3": 11, "3π/2": 12, "5π/3": 13, "7π/4": 14, "11π/6": 15])
     
     static let allGames: [Game] = [Games.singleDigitAddition, Games.twoDigitAddition, Games.twoDigitSubtraction, Games.singleDigitMultiplication, Games.binaryToDecimal, Games.primeFactorization, Games.unitCircleRadians]
     
