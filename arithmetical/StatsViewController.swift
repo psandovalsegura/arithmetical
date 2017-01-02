@@ -15,7 +15,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "My Stats"
+        self.title = "Top Scores"
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -37,6 +37,10 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         if let highscoreArray = UserDefaults.standard.stringArray(forKey: "\(currentGame.name!)_highscore") {
             cell.highscoreLabel.text = highscoreArray[0]
             cell.playerLabel.text = highscoreArray[1]
+            cell.topScoreCheckmarkImageView.isHidden = false
+        } else {
+            cell.highscoreLabel.text = "-"
+            cell.playerLabel.text = "-"
         }
         
         return cell
