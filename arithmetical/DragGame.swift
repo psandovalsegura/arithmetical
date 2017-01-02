@@ -16,8 +16,8 @@ class DragGame: Game {
     /* Instantiate a DragGame object looks like the following:
      *     Ex.
      */
-    init(name: String, summary: String, image: UIImage, numberGenerator: @escaping () -> (Int)) {
-        super.init(name: name, summary: summary, image: image)
+    init(name: String, summary: String, instructions: String, image: UIImage, selectionImage: UIImage, numberGenerator: @escaping () -> (Int)) {
+        super.init(name: name, summary: summary, instructions: instructions, image: image, selectionImage: selectionImage)
         self.mainNumberGenerator = numberGenerator
     }
 }

@@ -17,8 +17,8 @@ class ButtonGame: Game {
     /* Instantiate a ButtonGame object looks like the following:
      *     Ex. ButtonGame(name: "The Unit Circle", image: UIImage(named: "circle"), .. )
      */
-    init(name: String, summary: String, image: UIImage, selectionDictionary: [String: Int]) {
-        super.init(name: name, summary: summary, image: image)
+    init(name: String, summary: String, instructions: String, image: UIImage, selectionImage: UIImage, selectionDictionary: [String: Int]) {
+        super.init(name: name, summary: summary, instructions: instructions, image: image, selectionImage: selectionImage)
         
         self.selectionDictionary = selectionDictionary
         var keys = [String] (selectionDictionary.keys)

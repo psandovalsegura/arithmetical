@@ -13,15 +13,19 @@ class Game: NSObject {
     
     let name: String?
     let summary: String?
+    let instructions: String?
     let image: UIImage?
+    let selectionImage: UIImage?
     
     
     /* Instantiate a Game object looks like the following:
      *     Ex.
      */
-    init(name: String, summary: String, image: UIImage) {
+    init(name: String, summary: String, instructions: String, image: UIImage, selectionImage: UIImage) {
         self.name = name
         self.summary = summary
+        self.instructions = instructions
         self.image = image
+        self.selectionImage = selectionImage
     }
 }

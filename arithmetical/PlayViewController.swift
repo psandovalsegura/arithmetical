@@ -72,17 +72,29 @@ class PlayViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "gameCell") as! GameTableViewCell
-        
         let game = self.games[(indexPath as NSIndexPath).row]
+        
+        var cell: GameTableViewCell!
+        if indexPath == selectedIndexPath {
+            cell = self.tableView.dequeueReusableCell(withIdentifier: "selectedGameCell") as! GameTableViewCell
+            cell.descriptionLabel.text = game.instructions!
+            cell.gameImageView?.image = game.selectionImage!
+        } else {
+            cell = self.tableView.dequeueReusableCell(withIdentifier: "gameCell") as! GameTableViewCell
+            cell.descriptionLabel.text = game.summary!
+            cell.gameImageView?.image = game.image!
+
+        }
+        
+        //Properties of both selected and regular cells
         cell.gameLabel.text = game.name!
-        cell.descriptionLabel.text = game.summary!
-        cell.gameImageView?.image = game.image!
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var previousSelection: IndexPath?
+        
         //Update the selected indexPath to shrink or expand the size of the game cell
         switch selectedIndexPath {
         case nil:
@@ -93,16 +105,26 @@ class PlayViewController: UIViewController, UITableViewDelegate, UITableViewData
                 //If the same row was selected, remove the saved indexPath
                 selectedIndexPath = nil
             } else {
+                //Save the previously selected index path
+                previousSelection = selectedIndexPath
                 //If a new cell is tapped, save this new indexPath
                 selectedIndexPath = indexPath
             }
         }
+        
+        
+        //Refresh selected and previously selected cells
         tableView.reloadRows(at: [indexPath], with: .automatic)
+        if let previousIndexPath = previousSelection {
+            tableView.reloadRows(at: [previousIndexPath], with: .automatic)
+        }
+        
+
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.selectedIndexPath == indexPath {
-            return 128
+            return 200
         } else {
             return 98
         }

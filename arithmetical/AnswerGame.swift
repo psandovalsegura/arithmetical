@@ -17,8 +17,8 @@ class AnswerGame: Game {
     /* Instantiate a AnswerGame object looks like the following:
      *     Ex.
      */
-    init(name: String, summary: String, image: UIImage, questionGenerator: @escaping () -> (String)) {
-        super.init(name: name, summary: summary, image: image)
+    init(name: String, summary: String, instructions: String, image: UIImage, selectionImage: UIImage, questionGenerator: @escaping () -> (String)) {
+        super.init(name: name, summary: summary, instructions: instructions, image: image, selectionImage: selectionImage)
         self.questionGenerator = questionGenerator
     }
 }
