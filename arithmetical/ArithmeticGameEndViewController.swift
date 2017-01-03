@@ -86,6 +86,11 @@ class ArithmeticGameEndViewController: UIViewController, UITableViewDelegate, UI
         cell.number2Label.text = question[2]
         cell.answerLabel.text = question[3]
         
+        //Denote the last qustion
+        if indexPath.row == 0 {
+            cell.lastQuestionLabel.isHidden = false
+        }
+        
         return cell
     }
     

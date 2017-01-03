@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var timerLabel: UILabel!
     @IBOutlet weak var number1Label: UILabel!
@@ -33,6 +33,7 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
     var correctResponses = 0
     var previousQuestions:[[String]] = []
     var studyQuestions: [[String]] = []
+    var backspaceMistakes = 0 // There is initially no mistakes for the first question
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,7 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
         self.checkmarkImageView.isHidden = true
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        self.textField.delegate = self
         setupOperationLabel()
         textField.becomeFirstResponder()
         
@@ -58,15 +60,13 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
             //Hide timer label
             self.timerLabel.isHidden = true
         }
-        
     }
 
     
     @IBAction func onInputChange(_ sender: AnyObject) {
         if (textField.text != "" && textField.text != nil) && validateAnswer() {
             //The user input was correct - clear field for next question
-            textField.text = nil
-            presentQuestion()
+            resetView()
         }
     }
     
@@ -84,12 +84,7 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
     
     func validateAnswer() -> Bool {
         if game.operation(self.currentNumber1, self.currentNumber2) == Int(textField.text!) {
-            self.previousQuestions.insert([String(self.currentNumber1), self.operationLabel.text!, String(self.currentNumber2), self.textField.text!], at: 0) //append to the beginning of the questions array  - questions are string arrays of the format [<number1>, <operator>, <number2>, <answer>]
-            
-            //Animate the new cell that has been added to the Previous Questions
-            let indexPath = IndexPath(row: 0, section: 0)
-            tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.top)
-            
+            saveToPreviousQuestions()
             correctResponses += 1
             animateCorrectCheckmark()
             return true
@@ -98,17 +93,49 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
         }
     }
     
+    //Clear text field, log mistakes, and present next question
+    func resetView() {
+        textField.text = nil
+        
+        //Log mistakes
+        if self.backspaceMistakes > 0 {
+            saveToStudyQuestions()
+        }
+        
+        self.backspaceMistakes = 0 // Reset
+        presentQuestion()
+    }
+    
+    //Save the current, correctly answered question to the previousQuestions array
+    func saveToPreviousQuestions() {
+        //Append to the beginning of the questions array  - questions are string arrays of the format [<number1>, <operator>, <number2>, <answer>]
+        self.previousQuestions.insert([String(self.currentNumber1), self.operationLabel.text!, String(self.currentNumber2), String(game.operation(self.currentNumber1, self.currentNumber2))], at: 0)
+        
+        //Animate the new cell that has been added to the Previous Questions
+        let indexPath = IndexPath(row: 0, section: 0)
+        tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.top)
+    }
+    
+    //Save the correctly answered question to the studyQuestions array
+    func saveToStudyQuestions() {
+        //Append to the beginning of the study array  - questions are string arrays of the format [<number1>, <operator>, <number2>, <answer>, <backspace mistakes>]
+        self.studyQuestions.insert([String(self.currentNumber1), self.operationLabel.text!, String(self.currentNumber2), String(game.operation(self.currentNumber1, self.currentNumber2)), String(self.backspaceMistakes)], at: 0)
+    }
+    
     func timerUpdate() {
         if self.timerSeconds == 0 {
             timer.invalidate()
             textField.resignFirstResponder()
             textField.isEnabled = false
             
+            //Add the final, unanswered question to the study array
+            saveToStudyQuestions()
+            
             //Segue to end game
             self.performSegue(withIdentifier: "arithmeticGameEndSegue", sender: nil)
         }
         
-        self.timerLabel.text = Games.stringFromTimeInterval(self.timerSeconds) as String
+        self.timerLabel.text = Game.stringFromTimeInterval(self.timerSeconds) as String
         self.timerSeconds -= self.timerDecrement
         
     }
@@ -129,10 +156,10 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "arithmeticCell") as! ArithmeticGamePreviousQuestionCell
-        cell.operationLabel.text = self.operationLabel.text
         
         let previousQuestion = self.previousQuestions[(indexPath as NSIndexPath).row]
         cell.number1Label.text = previousQuestion[0]
+        cell.operationLabel.text = previousQuestion[1]
         cell.number2Label.text = previousQuestion[2]
         cell.answerLabel.text = previousQuestion[3]
         
@@ -152,6 +179,18 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
     
     @IBAction func onTap(_ sender: AnyObject) {
         self.view.endEditing(true)
+    }
+    
+    //Called when user presses backspace - a mistake has occurred
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let char = string.cString(using: String.Encoding.utf8)!
+        let isBackSpace = strcmp(char, "\\b")
+        
+        if (isBackSpace == -92) {
+            self.backspaceMistakes += 1
+        }
+        
+        return true
     }
     
     // MARK: - Navigation

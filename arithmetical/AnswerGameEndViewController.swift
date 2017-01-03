@@ -75,15 +75,19 @@ class AnswerGameEndViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0 //(self.studyQuestions?.count)!
+        return (self.studyQuestions?.count)!
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "answerCell") as! AnswerGamePreviousQuestionCell
         let question = self.studyQuestions![(indexPath as NSIndexPath).row]
-        cell.questionLabel.text = question[1]
-        cell.answerLabel.text = question[3]
+        cell.questionLabel.text = question[0]
+        cell.answerLabel.text = question[1]
         
+        //Denote the last qustion
+        if indexPath.row == 0 {
+            cell.lastQuestionLabel.isHidden = false
+        }
         return cell
     }
     

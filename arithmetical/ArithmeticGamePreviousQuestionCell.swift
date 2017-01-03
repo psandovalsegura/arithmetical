@@ -14,6 +14,7 @@ class ArithmeticGamePreviousQuestionCell: UITableViewCell {
     @IBOutlet weak var number2Label: UILabel!
     @IBOutlet weak var operationLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
+    @IBOutlet weak var lastQuestionLabel: UILabel!
     
 
     override func awakeFromNib() {

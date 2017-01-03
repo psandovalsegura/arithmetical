@@ -21,6 +21,18 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.tableView.dataSource = self
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        //Change navigation bar colors depending on view controller
+        /*
+        let navigationBar = self.navigationController?.navigationBar
+        navigationBar?.barTintColor = UIColor(red: 0.0/255.0, green: 186.0/255.0, blue: 0.0/255.0, alpha: 1.0)
+        navigationBar?.tintColor = UIColor.white
+        navigationBar?.titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
+        */
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Games.allGames.count

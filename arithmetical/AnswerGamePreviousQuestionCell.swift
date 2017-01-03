@@ -12,6 +12,7 @@ class AnswerGamePreviousQuestionCell: UITableViewCell {
 
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var answerLabel: UILabel!
+    @IBOutlet weak var lastQuestionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

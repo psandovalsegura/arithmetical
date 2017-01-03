@@ -28,4 +28,12 @@ class Game: NSObject {
         self.image = image
         self.selectionImage = selectionImage
     }
+    
+    // Mark -- Extra functionality
+    static func stringFromTimeInterval(_ seconds: Int) -> NSString {
+        let minutes = seconds / 60
+        let seconds = seconds % 60
+        
+        return NSString(format: "%0.2d:%0.2d", minutes, seconds)
+    }
 }
