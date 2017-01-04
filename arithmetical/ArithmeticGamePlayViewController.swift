@@ -70,6 +70,10 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
         }
     }
     
+    @IBAction func onSegmentControlChange(_ sender: Any) {
+        self.tableView.reloadData()
+    }
+    
     func presentQuestion() {
         
         self.currentNumber1 = self.game.number1generation()
@@ -112,14 +116,22 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
         self.previousQuestions.insert([String(self.currentNumber1), self.operationLabel.text!, String(self.currentNumber2), String(game.operation(self.currentNumber1, self.currentNumber2))], at: 0)
         
         //Animate the new cell that has been added to the Previous Questions
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.top)
+        if self.segmentedControl.selectedSegmentIndex == 0 {
+            let indexPath = IndexPath(row: 0, section: 0)
+            tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.top)
+        }
     }
     
     //Save the correctly answered question to the studyQuestions array
     func saveToStudyQuestions() {
         //Append to the beginning of the study array  - questions are string arrays of the format [<number1>, <operator>, <number2>, <answer>, <backspace mistakes>]
         self.studyQuestions.insert([String(self.currentNumber1), self.operationLabel.text!, String(self.currentNumber2), String(game.operation(self.currentNumber1, self.currentNumber2)), String(self.backspaceMistakes)], at: 0)
+        
+        //Animate the new cell that has been added to the Study Questions
+        if self.segmentedControl.selectedSegmentIndex == 1 {
+            let indexPath = IndexPath(row: 0, section: 0)
+            tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.top)
+        }
     }
     
     func timerUpdate() {
@@ -151,13 +163,25 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.previousQuestions.count
+        if self.segmentedControl.selectedSegmentIndex == 0 {
+            return self.previousQuestions.count
+        } else {
+            //Selected segment index is 1: "Study Up"
+            return self.studyQuestions.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "arithmeticCell") as! ArithmeticGamePreviousQuestionCell
         
-        let previousQuestion = self.previousQuestions[(indexPath as NSIndexPath).row]
+        var previousQuestion: [String]!
+        if self.segmentedControl.selectedSegmentIndex == 0 {
+            previousQuestion = self.previousQuestions[(indexPath as NSIndexPath).row]
+        } else {
+            previousQuestion = self.studyQuestions[(indexPath as NSIndexPath).row]
+        }
+        
         cell.number1Label.text = previousQuestion[0]
         cell.operationLabel.text = previousQuestion[1]
         cell.number2Label.text = previousQuestion[2]

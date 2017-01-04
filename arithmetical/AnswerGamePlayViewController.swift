@@ -66,6 +66,10 @@ class AnswerGamePlayViewController: UIViewController, UITableViewDelegate, UITab
         }
     }
     
+    @IBAction func onSegmentedControlChange(_ sender: Any) {
+        self.tableView.reloadData()
+    }
+    
     func presentQuestion() {
         self.currentQuestion = self.game.questionGenerator()
         self.questionLabel.text = self.currentQuestion
@@ -104,14 +108,22 @@ class AnswerGamePlayViewController: UIViewController, UITableViewDelegate, UITab
         self.previousQuestions.insert([self.currentQuestion, String(describing: Int(self.currentQuestion, radix: 2)!)], at: 0)
         
         //Animate the new cell that has been added to the Previous Questions
-        let indexPath = IndexPath(row: 0, section: 0)
-        tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.top)
+        if self.segmentedControl.selectedSegmentIndex == 0 {
+            let indexPath = IndexPath(row: 0, section: 0)
+            tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.top)
+        }
     }
     
     //Save the correctly answered question to the studyQuestions array
     func saveToStudyQuestions() {
         //Append to the beginning of the study array  - questions are string arrays of the format [<question>, <answer>, <backspace mistakes>]
         self.studyQuestions.insert([self.currentQuestion, String(describing: Int(self.currentQuestion, radix: 2)!), String(self.backspaceMistakes)], at: 0)
+        
+        //Animate the new cell that has been added to the Study Questions
+        if self.segmentedControl.selectedSegmentIndex == 1 {
+            let indexPath = IndexPath(row: 0, section: 0)
+            tableView.insertRows(at: [indexPath], with: UITableViewRowAnimation.top)
+        }
     }
     
     func timerUpdate() {
@@ -133,13 +145,24 @@ class AnswerGamePlayViewController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.previousQuestions.count
+        if self.segmentedControl.selectedSegmentIndex == 0 {
+            return self.previousQuestions.count
+        } else {
+            //Selected segment index is 1: "Study Up"
+            return self.studyQuestions.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableView.dequeueReusableCell(withIdentifier: "answerCell") as! AnswerGamePreviousQuestionCell
         
-        let previousQuestion = self.previousQuestions[(indexPath as NSIndexPath).row]
+        var previousQuestion: [String]!
+        if self.segmentedControl.selectedSegmentIndex == 0 {
+            previousQuestion = self.previousQuestions[(indexPath as NSIndexPath).row]
+        } else {
+            previousQuestion = self.studyQuestions[(indexPath as NSIndexPath).row]
+        }
+        
         cell.questionLabel.text = previousQuestion[0]
         cell.answerLabel.text = previousQuestion[1]
         
