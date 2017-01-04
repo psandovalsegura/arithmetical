@@ -171,7 +171,7 @@ class AnswerGamePlayViewController: UIViewController, UITableViewDelegate, UITab
     
     func animateCorrectCheckmark() {
         
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 1.0, animations: {
             self.checkmarkImageView.isHidden = false
             self.checkmarkImageView.alpha = 0.0
         }, completion: { (finished) in

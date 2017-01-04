@@ -124,7 +124,7 @@ class PlayViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if self.selectedIndexPath == indexPath {
-            return 200
+            return 220
         } else {
             return 98
         }
