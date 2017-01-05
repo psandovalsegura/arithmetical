@@ -14,7 +14,7 @@ class TopScoresTableViewCell: UITableViewCell {
     @IBOutlet weak var playerLabel: UILabel!
     @IBOutlet weak var gameLabel: UILabel!
     @IBOutlet weak var gameImageView: UIImageView!
-    @IBOutlet weak var topScoreCheckmarkImageView: UIImageView!
+    @IBOutlet weak var topScoreCheckmarkImageView: UIImageView!    
     
     override func awakeFromNib() {
         super.awakeFromNib()

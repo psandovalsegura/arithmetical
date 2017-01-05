@@ -7,17 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		810C55EE1E1DB81B0009C9A2 /* GameEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810C55ED1E1DB81B0009C9A2 /* GameEndViewController.swift */; };
 		810EF30D1E14D19D0047AAB7 /* ButtonGamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810EF30C1E14D19D0047AAB7 /* ButtonGamePlayViewController.swift */; };
 		810EF30F1E14D32A0047AAB7 /* ButtonGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810EF30E1E14D32A0047AAB7 /* ButtonGame.swift */; };
 		810EF3111E160A9D0047AAB7 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810EF3101E160A9D0047AAB7 /* UIViewExtension.swift */; };
 		812C5FFF1D8CD6E7005A6EFD /* TopScoresTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812C5FFE1D8CD6E7005A6EFD /* TopScoresTableViewCell.swift */; };
 		8133EA281DB622B200DAECF1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8133EA271DB622B200DAECF1 /* User.swift */; };
 		81421DA71D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DA61D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift */; };
-		81421DAA1D711A0000B6C59F /* ArithmeticGameEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DA91D711A0000B6C59F /* ArithmeticGameEndViewController.swift */; };
 		81421DAC1D712B1000B6C59F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DAB1D712B1000B6C59F /* Game.swift */; };
 		81421DAE1D71332A00B6C59F /* AnswerGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DAD1D71332A00B6C59F /* AnswerGame.swift */; };
 		818BD12D1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818BD12C1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift */; };
-		818BD12F1D792590002FD773 /* AnswerGameEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818BD12E1D792590002FD773 /* AnswerGameEndViewController.swift */; };
 		81AAEA921DCD302600A09CAC /* DragGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AAEA911DCD302600A09CAC /* DragGame.swift */; };
 		81AAEA941DCD372D00A09CAC /* DragGamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AAEA931DCD372D00A09CAC /* DragGamePlayViewController.swift */; };
 		81DB7CB31D74D7B300729E80 /* AnswerGamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DB7CB21D74D7B300729E80 /* AnswerGamePlayViewController.swift */; };
@@ -44,17 +43,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		810C55ED1E1DB81B0009C9A2 /* GameEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEndViewController.swift; sourceTree = "<group>"; };
 		810EF30C1E14D19D0047AAB7 /* ButtonGamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonGamePlayViewController.swift; sourceTree = "<group>"; };
 		810EF30E1E14D32A0047AAB7 /* ButtonGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonGame.swift; sourceTree = "<group>"; };
 		810EF3101E160A9D0047AAB7 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		812C5FFE1D8CD6E7005A6EFD /* TopScoresTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopScoresTableViewCell.swift; sourceTree = "<group>"; };
 		8133EA271DB622B200DAECF1 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		81421DA61D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArithmeticGamePreviousQuestionCell.swift; sourceTree = "<group>"; };
-		81421DA91D711A0000B6C59F /* ArithmeticGameEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArithmeticGameEndViewController.swift; sourceTree = "<group>"; };
 		81421DAB1D712B1000B6C59F /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		81421DAD1D71332A00B6C59F /* AnswerGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerGame.swift; sourceTree = "<group>"; };
 		818BD12C1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerGamePreviousQuestionCell.swift; sourceTree = "<group>"; };
-		818BD12E1D792590002FD773 /* AnswerGameEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerGameEndViewController.swift; sourceTree = "<group>"; };
 		81AAEA911DCD302600A09CAC /* DragGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragGame.swift; sourceTree = "<group>"; };
 		81AAEA931DCD372D00A09CAC /* DragGamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragGamePlayViewController.swift; sourceTree = "<group>"; };
 		81DB7CB21D74D7B300729E80 /* AnswerGamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerGamePlayViewController.swift; sourceTree = "<group>"; };
@@ -190,11 +188,10 @@
 			isa = PBXGroup;
 			children = (
 				9B0FA1E01D53F0AE00763A77 /* ArithmeticGamePlayViewController.swift */,
-				81421DA91D711A0000B6C59F /* ArithmeticGameEndViewController.swift */,
 				81AAEA931DCD372D00A09CAC /* DragGamePlayViewController.swift */,
 				81DB7CB21D74D7B300729E80 /* AnswerGamePlayViewController.swift */,
-				818BD12E1D792590002FD773 /* AnswerGameEndViewController.swift */,
 				810EF30C1E14D19D0047AAB7 /* ButtonGamePlayViewController.swift */,
+				810C55ED1E1DB81B0009C9A2 /* GameEndViewController.swift */,
 			);
 			name = "Game Play";
 			sourceTree = "<group>";
@@ -284,13 +281,12 @@
 				81421DAE1D71332A00B6C59F /* AnswerGame.swift in Sources */,
 				9B0FA1CD1D53D1DB00763A77 /* PlayViewController.swift in Sources */,
 				9B0FA1DE1D53E78800763A77 /* Games.swift in Sources */,
+				810C55EE1E1DB81B0009C9A2 /* GameEndViewController.swift in Sources */,
 				9B0FA1B31D53C11400763A77 /* arithmetical.xcdatamodeld in Sources */,
 				9B0FA1E11D53F0AE00763A77 /* ArithmeticGamePlayViewController.swift in Sources */,
 				818BD12D1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift in Sources */,
 				8133EA281DB622B200DAECF1 /* User.swift in Sources */,
-				818BD12F1D792590002FD773 /* AnswerGameEndViewController.swift in Sources */,
 				81AAEA921DCD302600A09CAC /* DragGame.swift in Sources */,
-				81421DAA1D711A0000B6C59F /* ArithmeticGameEndViewController.swift in Sources */,
 				9B0FA1AB1D53C11400763A77 /* AppDelegate.swift in Sources */,
 				9B0FA1D21D53D54200763A77 /* StatsViewController.swift in Sources */,
 				81421DAC1D712B1000B6C59F /* Game.swift in Sources */,

@@ -44,7 +44,7 @@ class Games {
         //Create a product of the chosen factors
         return factors.reduce(1, *)})
     
-    //Unit circle
+    //Unit circle: radians
     static let unitCircleRadians = ButtonGame(name: "Unit Circle: Radians", summary: "Memorize where each radian value lies on the unit circle!", instructions: "Given a radian value, tap on the corresponding angle of the unit circle. The endpoints of the main radii, at different angles, are a darker shade of blue.", image: UIImage(named: "circle")!, selectionImage: UIImage(named: "circleWhite")!, selectionDictionary: ["2π": 0, "π/6": 1, "π/4": 2, "π/3": 3 , "π/2": 4, "2π/3": 5, "3π/4": 6, "5π/6": 7, "π": 8, "7π/6": 9, "5π/4": 10, "4π/3": 11, "3π/2": 12, "5π/3": 13, "7π/4": 14, "11π/6": 15])
     
     static let allGames: [Game] = [Games.singleDigitAddition, Games.twoDigitAddition, Games.twoDigitSubtraction, Games.singleDigitMultiplication, Games.binaryToDecimal, Games.primeFactorization, Games.unitCircleRadians]

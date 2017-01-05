@@ -14,10 +14,14 @@ class DragGamePlayViewController: UIViewController {
     @IBOutlet weak var checkmarkImageView: UIImageView!
     @IBOutlet weak var correctLabel: UILabel!
     @IBOutlet weak var trayView: UIView!
+    @IBOutlet weak var progressLabel: UILabel!
     
     var game: DragGame!
     var option: String!
     var currentNumber: String!
+    var progressSeparator = "・"
+    var progress: [Int: Int] = [2:0, 3:0, 5:0, 7:0, 11:0]
+    var draggableItems = [2,3,5,7,11]
     
     //Mark -- Timer
     var timer = Timer()
@@ -51,9 +55,20 @@ class DragGamePlayViewController: UIViewController {
         self.correctLabel.text = String(self.correctResponses)
         self.presentQuestion()
         
+        if self.option == "timed" {
+            
+        } else {
+            self.timerLabel.isHidden = true
+        }
+        
     }
     
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        if timer.isValid {
+            timer.invalidate()
+        }
+    }
     
     func presentQuestion() {
         //Ensure the number is composite
@@ -62,9 +77,45 @@ class DragGamePlayViewController: UIViewController {
 
     func validateAnswer() -> Bool {
         if self.mainNumber! % Int(self.newPrime.text!)! == 0 {
+            //Update the progress dictionary and current factoring
+            self.progress[Int(self.newPrime.text!)!]! += 1
+            self.progressLabel.text = makeExponentString(progress: progress, draggableItems: draggableItems, separator: progressSeparator)
             return true
         }
         return false
+    }
+    
+    func makeExponentString(progress: [Int:Int], draggableItems: [Int], separator: String) -> String {
+        
+        let supers = [
+            "2": "\u{00B2}",
+            "3": "\u{00B3}",
+            "4": "\u{2074}",
+            "5": "\u{2075}",
+            "6": "\u{2076}",
+            "7": "\u{2077}",
+            "8": "\u{2078}",
+            "9": "\u{2079}"]
+        
+        var newStr = ""
+        for prime in draggableItems {
+            if progress[prime]! > 0 {
+                let superscript = String(describing: progress[prime]!)
+                newStr.append(String(describing: prime))
+                if supers.keys.contains(superscript) {
+                    newStr.append(Character(supers[superscript]!))
+                }
+                newStr.append(separator)
+            }
+        }
+        
+        //Remove the last character if it is a separator
+        if newStr[newStr.index(before: newStr.endIndex)] == Character(separator) {
+            newStr = newStr.substring(to: newStr.index(before: newStr.endIndex))
+        }
+        
+        
+        return newStr
     }
     
     //Deprecated
@@ -159,9 +210,24 @@ class DragGamePlayViewController: UIViewController {
     
     func resetView() {
         self.mainNumberScale = 1
+        resetProgress()
         UIView.animate(withDuration: 0.2, animations: {
             self.mainNumberLabel.transform = CGAffineTransform(scaleX: CGFloat(self.mainNumberScale), y: CGFloat(self.mainNumberScale))
         })
+    }
+    
+    func resetProgress() {
+        for prime in draggableItems {
+            self.progress[prime] = 0
+        }
+        
+        UIView.animate(withDuration: 1.0, animations: {
+            self.progressLabel.alpha = 0.0
+        }, completion: {(finished) in
+            self.progressLabel.text = nil
+            self.progressLabel.alpha = 1.0
+        })
+        
     }
     
     //Animates a falling prime and also removes it from view

@@ -58,6 +58,13 @@ class AnswerGamePlayViewController: UIViewController, UITableViewDelegate, UITab
         }
     
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        if timer.isValid {
+            timer.invalidate()
+        }
+    }
 
     @IBAction func onInputChange(_ sender: AnyObject) {
         if (textField.text != "" && textField.text != nil) && validateAnswer() {
@@ -137,7 +144,7 @@ class AnswerGamePlayViewController: UIViewController, UITableViewDelegate, UITab
             saveToStudyQuestions()
             
             //Segue to end game
-            self.performSegue(withIdentifier: "answerGameEndSegue", sender: nil)
+            self.performSegue(withIdentifier: "endGameSegue", sender: nil)
         }
         
         self.timerLabel.text = Game.stringFromTimeInterval(self.timerSeconds) as String
@@ -203,7 +210,7 @@ class AnswerGamePlayViewController: UIViewController, UITableViewDelegate, UITab
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         
-        if let endGameVC = segue.destination as? AnswerGameEndViewController {
+        if let endGameVC = segue.destination as? GameEndViewController {
             endGameVC.studyQuestions = self.studyQuestions
             endGameVC.correctResponses = self.correctResponses
             endGameVC.game = game

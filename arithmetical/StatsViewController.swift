@@ -52,7 +52,7 @@ class StatsViewController: UIViewController, UITableViewDelegate, UITableViewDat
             cell.topScoreCheckmarkImageView.isHidden = false
         } else {
             cell.highscoreLabel.text = nil
-            cell.playerLabel.text = nil
+            cell.playerLabel.text = "-"
         }
         
         return cell

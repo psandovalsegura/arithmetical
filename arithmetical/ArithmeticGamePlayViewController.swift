@@ -62,6 +62,12 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
         }
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        if timer.isValid {
+            timer.invalidate()
+        }
+    }
     
     @IBAction func onInputChange(_ sender: AnyObject) {
         if (textField.text != "" && textField.text != nil) && validateAnswer() {
@@ -144,7 +150,7 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
             saveToStudyQuestions()
             
             //Segue to end game
-            self.performSegue(withIdentifier: "arithmeticGameEndSegue", sender: nil)
+            self.performSegue(withIdentifier: "endGameSegue", sender: nil)
         }
         
         self.timerLabel.text = Game.stringFromTimeInterval(self.timerSeconds) as String
@@ -223,7 +229,7 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if let endGameVC = segue.destination as? ArithmeticGameEndViewController {
+        if let endGameVC = segue.destination as? GameEndViewController {
             endGameVC.studyQuestions = self.studyQuestions
             endGameVC.correctResponses = self.correctResponses
             endGameVC.game = game

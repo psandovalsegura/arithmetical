@@ -49,6 +49,13 @@ class ButtonGamePlayViewController: UIViewController {
         self.presentQuestion()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        if timer.isValid {
+            timer.invalidate()
+        }
+    }
+    
     func presentQuestion() {
         self.currentPrompt = self.game.mainPromptGenerator()
         self.correctTap = self.game.selectionDictionary[self.currentPrompt!]
