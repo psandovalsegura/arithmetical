@@ -20,8 +20,9 @@ class DragGamePlayViewController: UIViewController {
     var option: String!
     var currentNumber: String!
     var progressSeparator = "・"
-    var progress: [Int: Int] = [2:0, 3:0, 5:0, 7:0, 11:0]
-    var draggableItems = [2,3,5,7,11]
+    var progress: [Int: Int] = [2:0, 3:0, 5:0, 7:0, 11:0] //Maintain count of exponent (value) on base (key)
+    var draggableItems = [Int]() //Maintains order of dragged items
+    var mistakes: Int = 0
     
     //Mark -- Timer
     var timer = Timer()
@@ -33,6 +34,7 @@ class DragGamePlayViewController: UIViewController {
             self.correctLabel.text = String(correctResponses)
         }
     }
+    
     var previousQuestions:[[String]] = []
     var studyQuestions: [[String]] = []
 
@@ -71,18 +73,27 @@ class DragGamePlayViewController: UIViewController {
     }
     
     func presentQuestion() {
-        //Ensure the number is composite
+        //The number generator ensures the number is composite
         self.mainNumber = self.game.mainNumberGenerator()
+        self.currentNumber = String(self.mainNumber!)
     }
 
     func validateAnswer() -> Bool {
         if self.mainNumber! % Int(self.newPrime.text!)! == 0 {
-            //Update the progress dictionary and current factoring
-            self.progress[Int(self.newPrime.text!)!]! += 1
-            self.progressLabel.text = makeExponentString(progress: progress, draggableItems: draggableItems, separator: progressSeparator)
+            let validPrime = Int(self.newPrime.text!)!
+            if !self.draggableItems.contains(validPrime) {
+                self.draggableItems.append(validPrime)
+            }
+            updateProgressLabel(item: validPrime)
             return true
         }
         return false
+    }
+    
+    func updateProgressLabel(item: Int) {
+        //Update the progress dictionary and current factoring
+        self.progress[item]! += 1
+        self.progressLabel.text = makeExponentString(progress: self.progress, draggableItems: self.draggableItems, separator: self.progressSeparator)
     }
     
     func makeExponentString(progress: [Int:Int], draggableItems: [Int], separator: String) -> String {
@@ -163,9 +174,12 @@ class DragGamePlayViewController: UIViewController {
         case .ended:
             //Check if drop is valid
             if !self.validPrimePosition() {
+                //Invalid drag position
                 self.newPrime.removeFromSuperview()
             } else if !validateAnswer() {
+                //Invalid answer
                 self.mainNumberLabel.shake()
+                self.mistakes += 1
                 animatePrimeFalling()
             } else {
                 //Update the main number
@@ -176,6 +190,8 @@ class DragGamePlayViewController: UIViewController {
                 if self.mainNumber == 1 {
                     //Factoring complete: reset the main number label scale
                     animateCorrectCheckmark()
+                    saveToPreviousQuestions()
+                    studyCheck()
                     correctResponses += 1
                     resetView()
                     self.presentQuestion()
@@ -208,9 +224,40 @@ class DragGamePlayViewController: UIViewController {
         })
     }
     
+    //Save the current, correctly answered question to the previousQuestions array
+    func saveToPreviousQuestions() {
+        //Append to the beginning of the questions array  - questions are string arrays of the format [<current number>, <factoring>]
+        self.previousQuestions.insert([self.currentNumber, self.progressLabel.text!], at: 0)
+    }
+    
+    //Check if the current question should be saved in the studyQuestions array
+    func studyCheck() {
+        if self.mistakes > 0 {
+            saveToStudyQuestions()
+        }
+    }
+    
+    //Save the correctly answered question to the studyQuestions array
+    func saveToStudyQuestions() {
+        //Append to the beginning of the study array  - questions are string arrays of the format [<current number>, <factoring>, <mistakes>]
+        self.studyQuestions.insert([self.currentNumber, self.progressLabel.text!, String(self.mistakes)], at: 0)
+    }
+    
+    func animateFactoringLabel() {
+        UIView.animate(withDuration: 1.0, animations: {
+            self.progressLabel.alpha = 0.0
+        }, completion: {(finished) in
+            self.progressLabel.text = nil
+            self.progressLabel.alpha = 1.0
+        })
+    }
+    
     func resetView() {
         self.mainNumberScale = 1
         resetProgress()
+        
+        //Clear the progress label and reset the size of the main label
+        animateFactoringLabel()
         UIView.animate(withDuration: 0.2, animations: {
             self.mainNumberLabel.transform = CGAffineTransform(scaleX: CGFloat(self.mainNumberScale), y: CGFloat(self.mainNumberScale))
         })
@@ -220,14 +267,8 @@ class DragGamePlayViewController: UIViewController {
         for prime in draggableItems {
             self.progress[prime] = 0
         }
-        
-        UIView.animate(withDuration: 1.0, animations: {
-            self.progressLabel.alpha = 0.0
-        }, completion: {(finished) in
-            self.progressLabel.text = nil
-            self.progressLabel.alpha = 1.0
-        })
-        
+        self.draggableItems = [Int]()
+        self.mistakes = 0
     }
     
     //Animates a falling prime and also removes it from view

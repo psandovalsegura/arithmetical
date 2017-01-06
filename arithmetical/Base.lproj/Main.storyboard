@@ -773,7 +773,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rx4-On-Wba" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5530" y="131"/>
+            <point key="canvasLocation" x="5528.8000000000002" y="130.88455772113943"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="Zsh-ad-b0A">
@@ -1352,6 +1352,6 @@
         <image name="trophy" width="240" height="240"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uut-T4-cis"/>
+        <segue reference="gBR-Vk-d08"/>
     </inferredMetricsTieBreakers>
 </document>
