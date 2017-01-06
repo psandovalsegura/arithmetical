@@ -760,6 +760,46 @@
                                             <outlet property="questionLabel" destination="FT8-kv-Iej" id="GQr-vV-BPU"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="buttonCell" rowHeight="161" id="tw4-4J-Usi" customClass="ButtonGamePreviousQuestionCell" customModule="arithmetical" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="198" width="375" height="161"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tw4-4J-Usi" id="0h1-2F-sEm">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="160"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="=" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="od8-q5-eaW">
+                                                    <rect key="frame" x="166" y="49" width="42" height="49"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Thin" family="Apple SD Gothic Neo" pointSize="31"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="π/6" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R1F-1Z-vxs">
+                                                    <rect key="frame" x="8" y="49" width="151" height="49"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-Thin" family="Apple SD Gothic Neo" pointSize="31"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LAST QUESTION" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cJb-uZ-r2q">
+                                                    <rect key="frame" x="136" y="131" width="102" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="AppleSDGothicNeo-UltraLight" family="Apple SD Gothic Neo" pointSize="13"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="unitCircle" translatesAutoresizingMaskIntoConstraints="NO" id="Wc6-C8-FJ2">
+                                                    <rect key="frame" x="233" y="23" width="113" height="113"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="correctImageView" destination="Wc6-C8-FJ2" id="9px-gg-Ltu"/>
+                                            <outlet property="lastQuestionLabel" destination="cJb-uZ-r2q" id="R3x-iX-xML"/>
+                                            <outlet property="questionLabel" destination="R1F-1Z-vxs" id="wDe-xf-yPl"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
@@ -1033,6 +1073,7 @@
                         <outlet property="progressLabel" destination="u2h-Xd-6Bx" id="up0-QE-Swl"/>
                         <outlet property="timerLabel" destination="JW1-Vi-fmj" id="iak-jR-owL"/>
                         <outlet property="trayView" destination="5ng-ib-y03" id="6Ak-i4-uIl"/>
+                        <segue destination="mJ7-ka-Caz" kind="presentation" identifier="endGameSegue" id="pi8-DX-scQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zyE-cC-09o" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1333,6 +1374,7 @@
                         <outlet property="correctLabel" destination="Xxs-WD-dCQ" id="Rd1-bt-fDs"/>
                         <outlet property="mainPromptLabel" destination="l0L-Ew-vHk" id="Pts-x0-QfM"/>
                         <outlet property="timerLabel" destination="uTv-1b-ZTZ" id="MJJ-wo-giH"/>
+                        <segue destination="mJ7-ka-Caz" kind="presentation" identifier="endGameSegue" id="Ff3-KT-6pg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9EM-s7-TRy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1350,8 +1392,9 @@
         <image name="ribbon" width="800" height="800"/>
         <image name="settings" width="240" height="240"/>
         <image name="trophy" width="240" height="240"/>
+        <image name="unitCircle" width="557" height="557"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gBR-Vk-d08"/>
+        <segue reference="Ff3-KT-6pg"/>
     </inferredMetricsTieBreakers>
 </document>

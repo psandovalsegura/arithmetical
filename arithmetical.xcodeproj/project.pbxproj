@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		810C55EE1E1DB81B0009C9A2 /* GameEndViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810C55ED1E1DB81B0009C9A2 /* GameEndViewController.swift */; };
+		810C55FC1E2015650009C9A2 /* ButtonGamePreviousQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810C55FB1E2015650009C9A2 /* ButtonGamePreviousQuestionCell.swift */; };
 		810EF30D1E14D19D0047AAB7 /* ButtonGamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810EF30C1E14D19D0047AAB7 /* ButtonGamePlayViewController.swift */; };
 		810EF30F1E14D32A0047AAB7 /* ButtonGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810EF30E1E14D32A0047AAB7 /* ButtonGame.swift */; };
 		810EF3111E160A9D0047AAB7 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810EF3101E160A9D0047AAB7 /* UIViewExtension.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		810C55ED1E1DB81B0009C9A2 /* GameEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEndViewController.swift; sourceTree = "<group>"; };
+		810C55FB1E2015650009C9A2 /* ButtonGamePreviousQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonGamePreviousQuestionCell.swift; sourceTree = "<group>"; };
 		810EF30C1E14D19D0047AAB7 /* ButtonGamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonGamePlayViewController.swift; sourceTree = "<group>"; };
 		810EF30E1E14D32A0047AAB7 /* ButtonGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonGame.swift; sourceTree = "<group>"; };
 		810EF3101E160A9D0047AAB7 /* UIViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				81421DA61D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift */,
 				818BD12C1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift */,
 				812C5FFE1D8CD6E7005A6EFD /* TopScoresTableViewCell.swift */,
+				810C55FB1E2015650009C9A2 /* ButtonGamePreviousQuestionCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				818BD12D1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift in Sources */,
 				8133EA281DB622B200DAECF1 /* User.swift in Sources */,
 				81AAEA921DCD302600A09CAC /* DragGame.swift in Sources */,
+				810C55FC1E2015650009C9A2 /* ButtonGamePreviousQuestionCell.swift in Sources */,
 				9B0FA1AB1D53C11400763A77 /* AppDelegate.swift in Sources */,
 				9B0FA1D21D53D54200763A77 /* StatsViewController.swift in Sources */,
 				81421DAC1D712B1000B6C59F /* Game.swift in Sources */,

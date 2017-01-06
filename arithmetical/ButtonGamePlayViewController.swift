@@ -18,6 +18,9 @@ class ButtonGamePlayViewController: UIViewController {
     
     var game: ButtonGame!
     var option: String!
+    var previousQuestions:[[String]] = []
+    var studyQuestions: [[String]] = []
+    var mistakes = 0 // There is initially no mistakes for the first question
     
     //Mark -- Timer
     var timer = Timer()
@@ -38,8 +41,6 @@ class ButtonGamePlayViewController: UIViewController {
     
     var correctTap: Int? // A button tag
     
-    //Save the mapping between button tags and responses
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,6 +48,15 @@ class ButtonGamePlayViewController: UIViewController {
         self.title = self.game.name!
         self.correctLabel.text = String(self.correctResponses)
         self.presentQuestion()
+        
+        if self.option == "timed" {
+            // Start the timer
+            timer = Timer.scheduledTimer(timeInterval: Double(self.timerDecrement), target: self, selector: #selector(ArithmeticGamePlayViewController.timerUpdate), userInfo: nil, repeats: true )
+            timerUpdate()
+        } else if self.option == "unlimited" {
+            //Hide timer label
+            self.timerLabel.isHidden = true
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -64,10 +74,12 @@ class ButtonGamePlayViewController: UIViewController {
     func validButtonTap(tag: Int) {
         if tag == self.correctTap {
             animateCorrectCheckmark()
+            saveToPreviousQuestions()
             correctResponses += 1
             presentQuestion()
         } else {
             mainPromptLabel.shake()
+            self.mistakes += 1
         }
     }
     
@@ -91,15 +103,53 @@ class ButtonGamePlayViewController: UIViewController {
             self.correctCircleImageView.alpha = 1.0
         })
     }
+    
+    //Save the current, correctly answered question to the previousQuestions array
+    func saveToPreviousQuestions() {
+        //Append to the beginning of the questions array  - questions are string arrays of the format [<question>, <correct tag>]
+        self.previousQuestions.insert([self.currentPrompt!, String(describing: Int(self.correctTap!))], at: 0)
+        
+        if self.mistakes > 0 {
+            saveToStudyQuestions()
+        }
+        
+        self.mistakes = 0 // Reset
+    }
+    
+    //Save the correctly answered question to the studyQuestions array
+    func saveToStudyQuestions() {
+        //Append to the beginning of the study array  - questions are string arrays of the format [<question>, <correct tap>, <mistakes>]
+        self.studyQuestions.insert([self.currentPrompt!, String(describing: Int(self.correctTap!)), String(self.mistakes)], at: 0)
+    }
 
-    /*
+    func timerUpdate() {
+        
+        if self.timerSeconds == 0 {
+            timer.invalidate()
+            
+            //Add the final, unanswered question to the study array
+            saveToStudyQuestions()
+            
+            //Segue to end game
+            self.performSegue(withIdentifier: "endGameSegue", sender: nil)
+        }
+        
+        self.timerLabel.text = Game.stringFromTimeInterval(self.timerSeconds) as String
+        self.timerSeconds -= self.timerDecrement
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let endGameVC = segue.destination as? GameEndViewController {
+            endGameVC.studyQuestions = self.studyQuestions
+            endGameVC.correctResponses = self.correctResponses
+            endGameVC.game = game
+        }
     }
-    */
+    
 
 }

@@ -58,7 +58,9 @@ class DragGamePlayViewController: UIViewController {
         self.presentQuestion()
         
         if self.option == "timed" {
-            
+            // Start the timer
+            timer = Timer.scheduledTimer(timeInterval: Double(self.timerDecrement), target: self, selector: #selector(ArithmeticGamePlayViewController.timerUpdate), userInfo: nil, repeats: true )
+            timerUpdate()
         } else {
             self.timerLabel.isHidden = true
         }
@@ -290,16 +292,35 @@ class DragGamePlayViewController: UIViewController {
         }
     }
     
-    
+    func timerUpdate() {
+        if self.timerSeconds == 0 {
+            timer.invalidate()
+            
+            //Add the final, unanswered question to the study array - find way for computer to factor simply
+            //saveToStudyQuestions()
+            
+            //Segue to end game
+            self.performSegue(withIdentifier: "endGameSegue", sender: nil)
+        }
+        
+        self.timerLabel.text = Game.stringFromTimeInterval(self.timerSeconds) as String
+        self.timerSeconds -= self.timerDecrement
+        
+    }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if let endGameVC = segue.destination as? GameEndViewController {
+            endGameVC.studyQuestions = self.studyQuestions
+            endGameVC.correctResponses = self.correctResponses
+            endGameVC.game = game
+        }
     }
-    */
+    
 
 }

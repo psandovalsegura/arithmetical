@@ -107,6 +107,25 @@ class GameEndViewController: UIViewController, UITableViewDelegate, UITableViewD
                 }
                 
                 return cell
+            } else if ((self.game as? DragGame) != nil) {
+                let cell = self.tableView.dequeueReusableCell(withIdentifier: "answerCell") as! AnswerGamePreviousQuestionCell
+                cell.questionLabel.text = question[0]
+                cell.answerLabel.text = question[1]
+                
+                //Denote the last question, somehow
+                
+                return cell
+            } else if ((self.game as? ButtonGame) != nil) {
+                let cell = self.tableView.dequeueReusableCell(withIdentifier: "buttonCell") as! ButtonGamePreviousQuestionCell
+                
+                cell.questionLabel.text = question[0]
+                cell.correctImageView.image = UIImage(named: "unitCircle_\(question[1])")
+                //Denote the last question
+                if indexPath.row == 0 {
+                    cell.lastQuestionLabel.isHidden = false
+                }
+                
+                return cell
             }
             
             //Default
@@ -115,7 +134,21 @@ class GameEndViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         return createCell()
     }
-    
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if ((self.game as? ArithmeticGame) != nil) {
+            return 85
+        } else if ((self.game as? AnswerGame) != nil) {
+            return 85
+        } else if ((self.game as? DragGame) != nil) {
+            return 85
+        } else if ((self.game as? ButtonGame) != nil) {
+            return 161
+        }
+        
+        //Default 
+        return 85
+    }
     
     /*
     // MARK: - Navigation
