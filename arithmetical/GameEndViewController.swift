@@ -92,6 +92,8 @@ class GameEndViewController: UIViewController, UITableViewDelegate, UITableViewD
                 //Denote the last question
                 if indexPath.row == 0 {
                     cell.lastQuestionLabel.isHidden = false
+                } else {
+                    cell.lastQuestionLabel.isHidden = true
                 }
                 
                 return cell
@@ -104,6 +106,8 @@ class GameEndViewController: UIViewController, UITableViewDelegate, UITableViewD
                 //Denote the last question
                 if indexPath.row == 0 {
                     cell.lastQuestionLabel.isHidden = false
+                } else {
+                    cell.lastQuestionLabel.isHidden = true
                 }
                 
                 return cell
@@ -112,7 +116,7 @@ class GameEndViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.questionLabel.text = question[0]
                 cell.answerLabel.text = question[1]
                 
-                //Denote the last question, somehow
+                //TODO: Denote the last question
                 
                 return cell
             } else if ((self.game as? ButtonGame) != nil) {
@@ -120,9 +124,12 @@ class GameEndViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
                 cell.questionLabel.text = question[0]
                 cell.correctImageView.image = UIImage(named: "unitCircle_\(question[1])")
+                
                 //Denote the last question
                 if indexPath.row == 0 {
                     cell.lastQuestionLabel.isHidden = false
+                } else {
+                    cell.lastQuestionLabel.isHidden = true
                 }
                 
                 return cell
