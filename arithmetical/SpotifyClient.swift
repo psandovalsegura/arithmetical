@@ -19,31 +19,6 @@ class SpotifyClient {
     static var CURRENT_SESSION = SPTSession() //Properly set up after 'loginSession' is set up after Authentication success in the ViewController class
     static var CURRENT_USER = User(dictionary: ["nil": "nil"]) //Properly set up after 'loginSession' is set up after Authentication success in the ViewController class
     
-    static var spotifyStreamingControllerStarted = false
-    
-    class func loginToSpotifyPlayer() {
-    
-        if !spotifyStreamingControllerStarted {
-            do {
-                try SPTAudioStreamingController.sharedInstance().start(withClientId: SpotifyClient.CLIENT_ID)
-                SpotifyClient.spotifyStreamingControllerStarted = true
-            } catch is NSError {
-                print("Error: Unable to start SPTAudioStreamingController")
-            }
-        }
-        
-        
-        SPTAudioStreamingController.sharedInstance().diskCache = SPTDiskCache(capacity: 1024 * 1024 * 64)
-        SPTAudioStreamingController.sharedInstance().login(withAccessToken: SPTAuth.defaultInstance().session.accessToken)
-        
-        
-        if SPTAudioStreamingController.sharedInstance().loggedIn {
-            Games.spotifyActivated = true
-            print("SPTAudioStreamingController logged in!")
-        }
-        
-    }
-    
     /*
      A function that returns a user object for the current user
      

@@ -9,11 +9,13 @@
 import UIKit
 import SafariServices
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, SPTAudioStreamingDelegate {
     
     var safariVC: SFSafariViewController?
 
     @IBOutlet weak var spotifySwitch: UISwitch!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,9 +57,32 @@ class SettingsViewController: UIViewController {
     
     func loginSuccess() {
         self.safariVC?.dismiss(animated: true, completion: nil)
-        SpotifyClient.loginToSpotifyPlayer()
+        self.activityIndicator.startAnimating()
+        startStreamingController()
+        loginToStreamingController()
     }
     
+    func startStreamingController() {
+        do {
+            try SPTAudioStreamingController.sharedInstance().start(withClientId: SpotifyClient.CLIENT_ID)
+            SPTAudioStreamingController.sharedInstance().delegate = self
+        } catch is NSError {
+            print("Error: Unable to start SPTAudioStreamingController")
+        }
+    }
+    
+    func loginToStreamingController() {
+        SPTAudioStreamingController.sharedInstance().diskCache = SPTDiskCache(capacity: 1024 * 1024 * 64)
+        SPTAudioStreamingController.sharedInstance().login(withAccessToken: SPTAuth.defaultInstance().session.accessToken)
+    }
+    
+    func audioStreamingDidLogin(_ audioStreaming: SPTAudioStreamingController!) {
+        //print("SPTAudioStreamingController logged in!")
+        if SPTAudioStreamingController.sharedInstance().loggedIn {
+            Games.spotifyActivated = true
+            self.activityIndicator.stopAnimating()
+        }
+    }
 
     /*
     // MARK: - Navigation
