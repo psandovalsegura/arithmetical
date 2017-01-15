@@ -53,13 +53,13 @@ class SpotifyTimer: NSObject, SPTAudioStreamingDelegate, SPTAudioStreamingPlayba
     }
     
     func start(spotifyHeader: SpotifyHeaderView) {
-        start()
         self.spotifyHeaderView = spotifyHeader
-        updateHeader()
+        start()
     }
     
     func updateHeader() {
-        self.spotifyHeaderView?.trackLabel.text = loadedTracks?[trackIndex].name!
+        let currentTrack = loadedTracks?[trackIndex]
+        self.spotifyHeaderView?.trackLabel.text = (currentTrack?.name!)! + " - " + (currentTrack?.artistName)!
     }
     
     func timerGain() {
@@ -79,7 +79,21 @@ class SpotifyTimer: NSObject, SPTAudioStreamingDelegate, SPTAudioStreamingPlayba
             self.timerSeconds -= self.timerDecrement
         }
         
-        print(self.timerSeconds)
+        updateStreak()
+    }
+    
+    func updateStreak() {
+        let streak = Float(Double(self.timerSeconds) / 100.0)
+        
+        if streak < 0.3 {
+            self.spotifyHeaderView?.streakProgressView.tintColor = UIColor.red
+        } else if streak < 0.6 {
+            self.spotifyHeaderView?.streakProgressView.tintColor = UIColor.yellow
+        } else {
+            self.spotifyHeaderView?.streakProgressView.tintColor = UIColor.green
+        }
+        
+        self.spotifyHeaderView?.streakProgressView.progress = streak
     }
     
     func pause(){
@@ -108,6 +122,15 @@ class SpotifyTimer: NSObject, SPTAudioStreamingDelegate, SPTAudioStreamingPlayba
     }
     
     internal func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didStartPlayingTrack trackUri: String!) {
-        print("Did Start Playing Track!")
+        print("Did Start Playing Track")
     }
+    
+    internal func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didStopPlayingTrack trackUri: String!) {
+        print("Did Stop Playing Track")
+    }
+    
+    internal func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didChangePosition position: TimeInterval) {
+        updateStreak()
+    }
+    
 }
