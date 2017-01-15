@@ -20,24 +20,13 @@ class SettingsViewController: UIViewController, SPTAudioStreamingDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Settings"
-    
+        
         // Do any additional setup after loading the view.
         self.spotifySwitch.isOn = Games.spotifyActivated ? true: false
         
         NotificationCenter.default.addObserver(self, selector: #selector(loginSuccess), name: NSNotification.Name(rawValue: "closeSafariOnLogin"), object: nil)
     }
     
-    //This function is here for Spotify Authentication testing
-    /*
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        if let token = SPTAuth.defaultInstance().session {
-            print("Access token is here.")
-        }else {
-            print("No access token yet")
-        }
-    }
-    */
 
     @IBAction func onSpotifySwitch(_ sender: UISwitch) {
         if sender.isOn == false {
@@ -82,6 +71,14 @@ class SettingsViewController: UIViewController, SPTAudioStreamingDelegate {
             Games.spotifyActivated = true
             self.activityIndicator.stopAnimating()
         }
+    }
+    
+    func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didReceiveError error: Error!) {
+        let alert = UIAlertController(title: "Oh no!", message: "An error occurred. Please verify you have a Spotify Premium Subscription.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: { (action) in
+            self.activityIndicator.stopAnimating()
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 
     /*
