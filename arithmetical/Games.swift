@@ -12,6 +12,8 @@ import UIKit
 class Games {
     //The Container class for the possible games that can be played
     static let timerSeconds = 20
+    
+    //TODO: Update the spotifyActivated variable to accurately reflect whether the access token remains valid
     static var spotifyActivated = false
     
     //Add single digit numbers

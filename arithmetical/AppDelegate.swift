@@ -22,6 +22,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor.white]
         return true
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        // Pass the callback url with the access token into handler function
+        SPTAuth.defaultInstance().handleAuthCallback(withTriggeredAuthURL: url, callback: {(Void) in
+            SpotifyClient.CURRENT_SESSION = SPTAuth.defaultInstance().session
+            SpotifyClient.getCurrentUser(completionHandler: { (user) in
+                SpotifyClient.CURRENT_USER = user
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "closeSafariOnLogin"), object: url)
+            })
+            
+        })
+        
+        return true
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

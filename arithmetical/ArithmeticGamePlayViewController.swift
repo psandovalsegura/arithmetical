@@ -29,6 +29,7 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
     var timer = Timer()
     var timerSeconds = Games.timerSeconds // 120 seconds = 2 minutes
     let timerDecrement = 1
+    var spotifyTimer: SpotifyTimer?
     
     var correctResponses = 0
     var previousQuestions:[[String]] = []
@@ -59,6 +60,11 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
         } else if self.option == "unlimited" {
             //Hide timer label
             self.timerLabel.isHidden = true
+            
+            if Games.spotifyActivated {
+                self.spotifyTimer = SpotifyTimer()
+                self.spotifyTimer?.start()
+            }
         }
     }
 
@@ -66,6 +72,10 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
         super.viewWillDisappear(true)
         if timer.isValid {
             timer.invalidate()
+        }
+        
+        if let spotifyTimer = self.spotifyTimer {
+            self.spotifyTimer?.invalidate()
         }
     }
     
@@ -97,6 +107,7 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
             saveToPreviousQuestions()
             correctResponses += 1
             animateCorrectCheckmark()
+            self.spotifyTimer?.timerGain()
             return true
         } else {
             return false

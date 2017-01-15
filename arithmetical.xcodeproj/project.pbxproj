@@ -18,8 +18,19 @@
 		81421DAC1D712B1000B6C59F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DAB1D712B1000B6C59F /* Game.swift */; };
 		81421DAE1D71332A00B6C59F /* AnswerGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DAD1D71332A00B6C59F /* AnswerGame.swift */; };
 		818BD12D1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818BD12C1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift */; };
+		81A3F1CB1E2A012C004AE70D /* SpotifyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3F1CA1E2A012C004AE70D /* SpotifyTimer.swift */; };
 		81AAEA921DCD302600A09CAC /* DragGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AAEA911DCD302600A09CAC /* DragGame.swift */; };
 		81AAEA941DCD372D00A09CAC /* DragGamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AAEA931DCD372D00A09CAC /* DragGamePlayViewController.swift */; };
+		81D990CC1E29E74D00001CC2 /* SpotifyAudioPlayback.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D990C91E29E74D00001CC2 /* SpotifyAudioPlayback.framework */; };
+		81D990CD1E29E74D00001CC2 /* SpotifyAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D990CA1E29E74D00001CC2 /* SpotifyAuthentication.framework */; };
+		81D990CE1E29E74D00001CC2 /* SpotifyMetadata.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D990CB1E29E74D00001CC2 /* SpotifyMetadata.framework */; };
+		81D990D01E29E7E000001CC2 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D990CF1E29E7E000001CC2 /* AVFoundation.framework */; };
+		81D990D21E29E7E600001CC2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81D990D11E29E7E600001CC2 /* SystemConfiguration.framework */; };
+		81D990D61E29EA8D00001CC2 /* SpotifyClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D990D51E29EA8D00001CC2 /* SpotifyClient.swift */; };
+		81D990D81E29EAF600001CC2 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D990D71E29EAF600001CC2 /* Track.swift */; };
+		81D990DA1E29EB1300001CC2 /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D990D91E29EB1300001CC2 /* Playlist.swift */; };
+		81D990DC1E29EB7900001CC2 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D990DB1E29EB7900001CC2 /* Artist.swift */; };
+		81D990DE1E29EB8E00001CC2 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81D990DD1E29EB8E00001CC2 /* Album.swift */; };
 		81DB7CB31D74D7B300729E80 /* AnswerGamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DB7CB21D74D7B300729E80 /* AnswerGamePlayViewController.swift */; };
 		9B0FA1AB1D53C11400763A77 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0FA1AA1D53C11400763A77 /* AppDelegate.swift */; };
 		9B0FA1B01D53C11400763A77 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B0FA1AE1D53C11400763A77 /* Main.storyboard */; };
@@ -41,9 +52,12 @@
 		9B0FA1DC1D53E5DE00763A77 /* ArithmeticGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0FA1DB1D53E5DE00763A77 /* ArithmeticGame.swift */; };
 		9B0FA1DE1D53E78800763A77 /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0FA1DD1D53E78800763A77 /* Games.swift */; };
 		9B0FA1E11D53F0AE00763A77 /* ArithmeticGamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0FA1E01D53F0AE00763A77 /* ArithmeticGamePlayViewController.swift */; };
+		D8613EB3229C9435B459FCCC /* Pods_arithmetical.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AB6CCA9DC76B1CF8FD7FE51 /* Pods_arithmetical.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1BB6FD783CB9AF774F1BD112 /* Pods-arithmetical.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arithmetical.release.xcconfig"; path = "Pods/Target Support Files/Pods-arithmetical/Pods-arithmetical.release.xcconfig"; sourceTree = "<group>"; };
+		6AB6CCA9DC76B1CF8FD7FE51 /* Pods_arithmetical.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_arithmetical.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		810C55ED1E1DB81B0009C9A2 /* GameEndViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEndViewController.swift; sourceTree = "<group>"; };
 		810C55FB1E2015650009C9A2 /* ButtonGamePreviousQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonGamePreviousQuestionCell.swift; sourceTree = "<group>"; };
 		810EF30C1E14D19D0047AAB7 /* ButtonGamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonGamePlayViewController.swift; sourceTree = "<group>"; };
@@ -55,9 +69,22 @@
 		81421DAB1D712B1000B6C59F /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		81421DAD1D71332A00B6C59F /* AnswerGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerGame.swift; sourceTree = "<group>"; };
 		818BD12C1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerGamePreviousQuestionCell.swift; sourceTree = "<group>"; };
+		81A3F1CA1E2A012C004AE70D /* SpotifyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyTimer.swift; sourceTree = "<group>"; };
 		81AAEA911DCD302600A09CAC /* DragGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragGame.swift; sourceTree = "<group>"; };
 		81AAEA931DCD372D00A09CAC /* DragGamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragGamePlayViewController.swift; sourceTree = "<group>"; };
+		81D990C91E29E74D00001CC2 /* SpotifyAudioPlayback.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAudioPlayback.framework; sourceTree = "<group>"; };
+		81D990CA1E29E74D00001CC2 /* SpotifyAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyAuthentication.framework; sourceTree = "<group>"; };
+		81D990CB1E29E74D00001CC2 /* SpotifyMetadata.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SpotifyMetadata.framework; sourceTree = "<group>"; };
+		81D990CF1E29E7E000001CC2 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		81D990D11E29E7E600001CC2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		81D990D31E29E9C100001CC2 /* Spotify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Spotify-Bridging-Header.h"; sourceTree = "<group>"; };
+		81D990D51E29EA8D00001CC2 /* SpotifyClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyClient.swift; sourceTree = "<group>"; };
+		81D990D71E29EAF600001CC2 /* Track.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		81D990D91E29EB1300001CC2 /* Playlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
+		81D990DB1E29EB7900001CC2 /* Artist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		81D990DD1E29EB8E00001CC2 /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		81DB7CB21D74D7B300729E80 /* AnswerGamePlayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerGamePlayViewController.swift; sourceTree = "<group>"; };
+		955CADDC109BF38EABB10376 /* Pods-arithmetical.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-arithmetical.debug.xcconfig"; path = "Pods/Target Support Files/Pods-arithmetical/Pods-arithmetical.debug.xcconfig"; sourceTree = "<group>"; };
 		9B0FA1A71D53C11400763A77 /* arithmetical.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arithmetical.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B0FA1AA1D53C11400763A77 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B0FA1AF1D53C11400763A77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -87,12 +114,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81D990D21E29E7E600001CC2 /* SystemConfiguration.framework in Frameworks */,
+				81D990D01E29E7E000001CC2 /* AVFoundation.framework in Frameworks */,
+				81D990CE1E29E74D00001CC2 /* SpotifyMetadata.framework in Frameworks */,
+				D8613EB3229C9435B459FCCC /* Pods_arithmetical.framework in Frameworks */,
+				81D990CD1E29E74D00001CC2 /* SpotifyAuthentication.framework in Frameworks */,
+				81D990CC1E29E74D00001CC2 /* SpotifyAudioPlayback.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		041C299E8689B1E7B512D059 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				955CADDC109BF38EABB10376 /* Pods-arithmetical.debug.xcconfig */,
+				1BB6FD783CB9AF774F1BD112 /* Pods-arithmetical.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		81421DA81D710E5C00B6C59F /* Data Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,11 +149,39 @@
 			name = "Data Models";
 			sourceTree = "<group>";
 		};
+		81D990D41E29EA5300001CC2 /* Spotify */ = {
+			isa = PBXGroup;
+			children = (
+				81D990D51E29EA8D00001CC2 /* SpotifyClient.swift */,
+				81A3F1CA1E2A012C004AE70D /* SpotifyTimer.swift */,
+				81D990D71E29EAF600001CC2 /* Track.swift */,
+				81D990D91E29EB1300001CC2 /* Playlist.swift */,
+				81D990DB1E29EB7900001CC2 /* Artist.swift */,
+				81D990DD1E29EB8E00001CC2 /* Album.swift */,
+			);
+			name = Spotify;
+			sourceTree = "<group>";
+		};
+		98A7E7AC4FD5CE56AABA4397 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				81D990D11E29E7E600001CC2 /* SystemConfiguration.framework */,
+				81D990CF1E29E7E000001CC2 /* AVFoundation.framework */,
+				81D990C91E29E74D00001CC2 /* SpotifyAudioPlayback.framework */,
+				81D990CA1E29E74D00001CC2 /* SpotifyAuthentication.framework */,
+				81D990CB1E29E74D00001CC2 /* SpotifyMetadata.framework */,
+				6AB6CCA9DC76B1CF8FD7FE51 /* Pods_arithmetical.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9B0FA19E1D53C11400763A77 = {
 			isa = PBXGroup;
 			children = (
 				9B0FA1A91D53C11400763A77 /* arithmetical */,
 				9B0FA1A81D53C11400763A77 /* Products */,
+				041C299E8689B1E7B512D059 /* Pods */,
+				98A7E7AC4FD5CE56AABA4397 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,6 +196,7 @@
 		9B0FA1A91D53C11400763A77 /* arithmetical */ = {
 			isa = PBXGroup;
 			children = (
+				81D990D41E29EA5300001CC2 /* Spotify */,
 				81421DA81D710E5C00B6C59F /* Data Models */,
 				9B0FA1CE1D53D4E700763A77 /* Main Options */,
 				9B0FA1D51D53D5DE00763A77 /* Views */,
@@ -137,6 +208,7 @@
 				9B0FA1B41D53C11400763A77 /* Assets.xcassets */,
 				9B0FA1B91D53C11400763A77 /* Info.plist */,
 				9B0FA1B11D53C11400763A77 /* arithmetical.xcdatamodeld */,
+				81D990D31E29E9C100001CC2 /* Spotify-Bridging-Header.h */,
 			);
 			path = arithmetical;
 			sourceTree = "<group>";
@@ -206,9 +278,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9B0FA1BC1D53C11400763A77 /* Build configuration list for PBXNativeTarget "arithmetical" */;
 			buildPhases = (
+				84D6A7DE1755A3896115F5A5 /* [CP] Check Pods Manifest.lock */,
 				9B0FA1A31D53C11400763A77 /* Sources */,
 				9B0FA1A41D53C11400763A77 /* Frameworks */,
 				9B0FA1A51D53C11400763A77 /* Resources */,
+				63327E1749947FF27EF623ED /* [CP] Embed Pods Frameworks */,
+				38BB5CED9A2EDBAE45F2002D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -231,7 +306,7 @@
 				TargetAttributes = {
 					9B0FA1A61D53C11400763A77 = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 5HLDUZFLDY;
+						DevelopmentTeam = 5RW24DE8R9;
 						LastSwiftMigration = 0800;
 					};
 				};
@@ -273,6 +348,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		38BB5CED9A2EDBAE45F2002D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-arithmetical/Pods-arithmetical-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		63327E1749947FF27EF623ED /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-arithmetical/Pods-arithmetical-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84D6A7DE1755A3896115F5A5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9B0FA1A31D53C11400763A77 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -281,6 +404,8 @@
 				81AAEA941DCD372D00A09CAC /* DragGamePlayViewController.swift in Sources */,
 				9B0FA1D71D53D5FE00763A77 /* GameTableViewCell.swift in Sources */,
 				9B0FA1DC1D53E5DE00763A77 /* ArithmeticGame.swift in Sources */,
+				81D990DA1E29EB1300001CC2 /* Playlist.swift in Sources */,
+				81D990DC1E29EB7900001CC2 /* Artist.swift in Sources */,
 				81421DAE1D71332A00B6C59F /* AnswerGame.swift in Sources */,
 				9B0FA1CD1D53D1DB00763A77 /* PlayViewController.swift in Sources */,
 				9B0FA1DE1D53E78800763A77 /* Games.swift in Sources */,
@@ -292,6 +417,7 @@
 				81AAEA921DCD302600A09CAC /* DragGame.swift in Sources */,
 				810C55FC1E2015650009C9A2 /* ButtonGamePreviousQuestionCell.swift in Sources */,
 				9B0FA1AB1D53C11400763A77 /* AppDelegate.swift in Sources */,
+				81D990D81E29EAF600001CC2 /* Track.swift in Sources */,
 				9B0FA1D21D53D54200763A77 /* StatsViewController.swift in Sources */,
 				81421DAC1D712B1000B6C59F /* Game.swift in Sources */,
 				9B0FA1DA1D53DA9200763A77 /* ArithmeticOptionsViewController.swift in Sources */,
@@ -301,8 +427,11 @@
 				810EF3111E160A9D0047AAB7 /* UIViewExtension.swift in Sources */,
 				9B0FA1D01D53D51500763A77 /* MainViewController.swift in Sources */,
 				810EF30D1E14D19D0047AAB7 /* ButtonGamePlayViewController.swift in Sources */,
+				81D990D61E29EA8D00001CC2 /* SpotifyClient.swift in Sources */,
 				81421DA71D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift in Sources */,
 				9B0FA1D41D53D54C00763A77 /* SettingsViewController.swift in Sources */,
+				81D990DE1E29EB8E00001CC2 /* Album.swift in Sources */,
+				81A3F1CB1E2A012C004AE70D /* SpotifyTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,30 +547,46 @@
 		};
 		9B0FA1BD1D53C11400763A77 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 955CADDC109BF38EABB10376 /* Pods-arithmetical.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5RW24DE8R9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = arithmetical/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sandoval.arithmetical;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "arithmetical/Spotify-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		9B0FA1BE1D53C11400763A77 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1BB6FD783CB9AF774F1BD112 /* Pods-arithmetical.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 5RW24DE8R9;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = arithmetical/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sandoval.arithmetical;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "arithmetical/Spotify-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
