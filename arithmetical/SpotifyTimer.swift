@@ -10,6 +10,7 @@ import Foundation
 
 //TODO: Remove SPTAudioStreamingDelegate if no delegate methods are useful
 class SpotifyTimer: NSObject, SPTAudioStreamingDelegate, SPTAudioStreamingPlaybackDelegate {
+    var spotifyHeaderView: SpotifyHeaderView?
     var timer = Timer()
     var timerDecrement = 1
     var timerSeconds = 3
@@ -40,12 +41,25 @@ class SpotifyTimer: NSObject, SPTAudioStreamingDelegate, SPTAudioStreamingPlayba
                             print("Error in playSportifyURI: \(error?.localizedDescription)")
                         } else {
                             self.accuratelyPlaying = true
+                            if self.spotifyHeaderView != nil {
+                                self.updateHeader()
+                            }
                         }
                     })
                 }
             })
         }
         
+    }
+    
+    func start(spotifyHeader: SpotifyHeaderView) {
+        start()
+        self.spotifyHeaderView = spotifyHeader
+        updateHeader()
+    }
+    
+    func updateHeader() {
+        self.spotifyHeaderView?.trackLabel.text = loadedTracks?[trackIndex].name!
     }
     
     func timerGain() {

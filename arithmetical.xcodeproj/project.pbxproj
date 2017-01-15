@@ -17,6 +17,8 @@
 		81421DA71D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DA61D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift */; };
 		81421DAC1D712B1000B6C59F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DAB1D712B1000B6C59F /* Game.swift */; };
 		81421DAE1D71332A00B6C59F /* AnswerGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81421DAD1D71332A00B6C59F /* AnswerGame.swift */; };
+		817CC1561E2B76010080D10B /* SpotifyHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 817CC1551E2B76010080D10B /* SpotifyHeaderView.xib */; };
+		817CC1581E2B761C0080D10B /* SpotifyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 817CC1571E2B761C0080D10B /* SpotifyHeaderView.swift */; };
 		818BD12D1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818BD12C1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift */; };
 		81A3F1CB1E2A012C004AE70D /* SpotifyTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A3F1CA1E2A012C004AE70D /* SpotifyTimer.swift */; };
 		81AAEA921DCD302600A09CAC /* DragGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81AAEA911DCD302600A09CAC /* DragGame.swift */; };
@@ -68,6 +70,8 @@
 		81421DA61D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArithmeticGamePreviousQuestionCell.swift; sourceTree = "<group>"; };
 		81421DAB1D712B1000B6C59F /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		81421DAD1D71332A00B6C59F /* AnswerGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerGame.swift; sourceTree = "<group>"; };
+		817CC1551E2B76010080D10B /* SpotifyHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpotifyHeaderView.xib; sourceTree = "<group>"; };
+		817CC1571E2B761C0080D10B /* SpotifyHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyHeaderView.swift; sourceTree = "<group>"; };
 		818BD12C1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerGamePreviousQuestionCell.swift; sourceTree = "<group>"; };
 		81A3F1CA1E2A012C004AE70D /* SpotifyTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpotifyTimer.swift; sourceTree = "<group>"; };
 		81AAEA911DCD302600A09CAC /* DragGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DragGame.swift; sourceTree = "<group>"; };
@@ -147,6 +151,15 @@
 				8133EA271DB622B200DAECF1 /* User.swift */,
 			);
 			name = "Data Models";
+			sourceTree = "<group>";
+		};
+		817CC1541E2B75E00080D10B /* SpotifyHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				817CC1571E2B761C0080D10B /* SpotifyHeaderView.swift */,
+				817CC1551E2B76010080D10B /* SpotifyHeaderView.xib */,
+			);
+			name = SpotifyHeaderView;
 			sourceTree = "<group>";
 		};
 		81D990D41E29EA5300001CC2 /* Spotify */ = {
@@ -242,6 +255,7 @@
 		9B0FA1D51D53D5DE00763A77 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				817CC1541E2B75E00080D10B /* SpotifyHeaderView */,
 				9B0FA1D61D53D5FE00763A77 /* GameTableViewCell.swift */,
 				81421DA61D710E4D00B6C59F /* ArithmeticGamePreviousQuestionCell.swift */,
 				818BD12C1D79215E002FD773 /* AnswerGamePreviousQuestionCell.swift */,
@@ -338,6 +352,7 @@
 				9B0FA1C71D53CFC900763A77 /* SanFranciscoText-Heavy.otf in Resources */,
 				9B0FA1C81D53CFC900763A77 /* SanFranciscoText-Light.otf in Resources */,
 				9B0FA1C91D53CFC900763A77 /* SanFranciscoText-Medium.otf in Resources */,
+				817CC1561E2B76010080D10B /* SpotifyHeaderView.xib in Resources */,
 				9B0FA1CA1D53CFC900763A77 /* SanFranciscoText-Regular.otf in Resources */,
 				9B0FA1CB1D53CFC900763A77 /* SanFranciscoText-Semibold.otf in Resources */,
 				9B0FA1B81D53C11400763A77 /* LaunchScreen.storyboard in Resources */,
@@ -405,6 +420,7 @@
 				9B0FA1D71D53D5FE00763A77 /* GameTableViewCell.swift in Sources */,
 				9B0FA1DC1D53E5DE00763A77 /* ArithmeticGame.swift in Sources */,
 				81D990DA1E29EB1300001CC2 /* Playlist.swift in Sources */,
+				817CC1581E2B761C0080D10B /* SpotifyHeaderView.swift in Sources */,
 				81D990DC1E29EB7900001CC2 /* Artist.swift in Sources */,
 				81421DAE1D71332A00B6C59F /* AnswerGame.swift in Sources */,
 				9B0FA1CD1D53D1DB00763A77 /* PlayViewController.swift in Sources */,

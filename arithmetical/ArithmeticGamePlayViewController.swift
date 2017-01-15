@@ -20,6 +20,8 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
     @IBOutlet weak var checkmarkImageView: UIImageView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
+    @IBOutlet weak var spotifyHeaderView: SpotifyHeaderView!
+    
     var game: ArithmeticGame!
     var option: String!
     var currentNumber1: Int!
@@ -62,8 +64,9 @@ class ArithmeticGamePlayViewController: UIViewController, UITableViewDelegate, U
             self.timerLabel.isHidden = true
             
             if Games.spotifyActivated {
+                self.spotifyHeaderView.isHidden = false
                 self.spotifyTimer = SpotifyTimer()
-                self.spotifyTimer?.start()
+                self.spotifyTimer?.start(spotifyHeader: self.spotifyHeaderView)
             }
         }
     }
