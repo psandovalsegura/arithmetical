@@ -62,6 +62,7 @@ class SpotifyTimer: NSObject, SPTAudioStreamingDelegate, SPTAudioStreamingPlayba
         self.spotifyHeaderView?.trackLabel.text = (currentTrack?.name!)! + " - " + (currentTrack?.artistName)!
         
         //Load album artwork
+        
     }
     
     func timerGain() {
@@ -129,6 +130,22 @@ class SpotifyTimer: NSObject, SPTAudioStreamingDelegate, SPTAudioStreamingPlayba
     
     internal func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didStopPlayingTrack trackUri: String!) {
         print("Did Stop Playing Track")
+        //Go to next loaded track
+        self.trackIndex += 1
+        if self.trackIndex < (self.loadedTracks?.count)! {
+            let currentTrack = self.loadedTracks?[self.trackIndex]
+            SPTAudioStreamingController.sharedInstance().playSpotifyURI(currentTrack?.uri!, startingWith: 0, startingWithPosition: 0, callback: { (error) in
+                if error != nil {
+                    print("Error in playSportifyURI: \(error?.localizedDescription)")
+                } else {
+                    self.accuratelyPlaying = true
+                    if self.spotifyHeaderView != nil {
+                        self.updateHeader()
+                    }
+                }
+            })
+        }
+        
     }
     
     internal func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didChangePosition position: TimeInterval) {
