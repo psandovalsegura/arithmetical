@@ -13,7 +13,7 @@ class SpotifyTimer: NSObject, SPTAudioStreamingDelegate, SPTAudioStreamingPlayba
     var spotifyHeaderView: SpotifyHeaderView?
     var timer = Timer()
     var timerDecrement = 1
-    var timerSeconds = 3
+    var timerSeconds = 5 //Initial amount
     
     var loadedTracks: [Track]?
     var trackIndex: Int = 0
@@ -60,10 +60,12 @@ class SpotifyTimer: NSObject, SPTAudioStreamingDelegate, SPTAudioStreamingPlayba
     func updateHeader() {
         let currentTrack = loadedTracks?[trackIndex]
         self.spotifyHeaderView?.trackLabel.text = (currentTrack?.name!)! + " - " + (currentTrack?.artistName)!
+        
+        //Load album artwork
     }
     
     func timerGain() {
-        self.timerSeconds += 3
+        self.timerSeconds += 5
         play()
     }
     
