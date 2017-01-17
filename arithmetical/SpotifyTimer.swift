@@ -27,7 +27,7 @@ class SpotifyTimer: NSObject, SPTAudioStreamingDelegate, SPTAudioStreamingPlayba
         self.timer = Timer.scheduledTimer(timeInterval: Double(self.timerDecrement), target: self, selector: #selector(self.timerUpdate), userInfo: nil, repeats: true)
         
         //Play a song
-        SpotifyClient.getCurrentUserSavedTracks { (tracks) in
+        SpotifyClient.getPlaylistTracks(playlist: Games.selectedPlaylist!, completionHandler: { (tracks) in
             self.loadedTracks = tracks
             self.trackIndex = 0
             let firstTrack = tracks[0]
@@ -48,7 +48,7 @@ class SpotifyTimer: NSObject, SPTAudioStreamingDelegate, SPTAudioStreamingPlayba
                     })
                 }
             })
-        }
+        })
         
     }
     
@@ -125,11 +125,11 @@ class SpotifyTimer: NSObject, SPTAudioStreamingDelegate, SPTAudioStreamingPlayba
     }
     
     internal func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didStartPlayingTrack trackUri: String!) {
-        print("Did Start Playing Track")
+        //print("Did Start Playing Track")
     }
     
     internal func audioStreaming(_ audioStreaming: SPTAudioStreamingController!, didStopPlayingTrack trackUri: String!) {
-        print("Did Stop Playing Track")
+        //print("Did Stop Playing Track")
         //Go to next loaded track
         self.trackIndex += 1
         if self.trackIndex < (self.loadedTracks?.count)! {

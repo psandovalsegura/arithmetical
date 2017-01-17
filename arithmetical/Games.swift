@@ -15,6 +15,7 @@ class Games {
     
     //TODO: Update the spotifyActivated variable to accurately reflect whether the access token remains valid
     static var spotifyActivated = false
+    static var selectedPlaylist: Playlist?
     
     //Add single digit numbers
     static let singleDigitAddition: ArithmeticGame = ArithmeticGame(name: "Single Digit Addition", summary: "Add numbers. Easy as 1 + 1.", instructions: "Type your answer to random addition problems into the text field. You can tap outside the text field to view previosly answered questions!", image: UIImage(named: "plus")!, selectionImage: UIImage(named: "plusWhite")!, number1generation: { () in return Int(arc4random_uniform(9) + 1)}, number2generation: { () in return Int(arc4random_uniform(9) + 1)}, operation: +)

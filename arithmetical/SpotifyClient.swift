@@ -134,7 +134,6 @@ class SpotifyClient {
                     returnTracks.append(Track(dictionary: trackDictionary))
                 }
                 
-                print("Received \(returnTracks.count) tracks.")
                 completionHandler(returnTracks)
             }
         }
