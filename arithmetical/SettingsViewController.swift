@@ -17,7 +17,6 @@ class SettingsViewController: UIViewController, SPTAudioStreamingDelegate, UIPic
     @IBOutlet weak var spotifySwitch: UISwitch!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    var loadedPlaylists: [Playlist]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +25,13 @@ class SettingsViewController: UIViewController, SPTAudioStreamingDelegate, UIPic
         self.picker.delegate = self
         self.picker.dataSource = self
         
-        // Do any additional setup after loading the view.
+        // Update spotify switch
         self.spotifySwitch.isOn = Games.spotifyActivated ? true: false
+        
+        //Update picker view
+        if Games.selectedPlaylist != nil {
+            self.picker.selectRow(Games.selectedPlaylistRow!, inComponent: 0, animated: true)
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(loginSuccess), name: NSNotification.Name(rawValue: "closeSafariOnLogin"), object: nil)
     }
@@ -57,7 +61,7 @@ class SettingsViewController: UIViewController, SPTAudioStreamingDelegate, UIPic
         
         //Load user playlists for selection
         SpotifyClient.getCurrentUserPlaylists { (playlists) in
-            self.loadedPlaylists = playlists
+            Games.loadedPlaylists = playlists
             self.picker.reloadAllComponents()
         }
     }
@@ -97,8 +101,8 @@ class SettingsViewController: UIViewController, SPTAudioStreamingDelegate, UIPic
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if self.loadedPlaylists != nil {
-            return (self.loadedPlaylists?.count)!
+        if Games.loadedPlaylists != nil {
+            return (Games.loadedPlaylists?.count)!
         }
         
         return 0
@@ -106,13 +110,14 @@ class SettingsViewController: UIViewController, SPTAudioStreamingDelegate, UIPic
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         //Number of rows in component should be greater than 0?
-        return self.loadedPlaylists?[row].name!
+        return Games.loadedPlaylists?[row].name!
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //Set selected playlist
-        if self.loadedPlaylists != nil {
-            Games.selectedPlaylist = self.loadedPlaylists?[row]
+        if Games.loadedPlaylists != nil {
+            Games.selectedPlaylist = Games.loadedPlaylists?[row]
+            Games.selectedPlaylistRow = row
         }
     }
 
