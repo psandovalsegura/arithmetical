@@ -576,7 +576,7 @@
 				INFOPLIST_FILE = arithmetical/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sandoval.arithmetical;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sandovalSoftware.arithmetical;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "arithmetical/Spotify-Bridging-Header.h";
@@ -599,7 +599,7 @@
 				INFOPLIST_FILE = arithmetical/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = com.sandoval.arithmetical;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sandovalSoftware.arithmetical;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "arithmetical/Spotify-Bridging-Header.h";

@@ -40,6 +40,7 @@ class SettingsViewController: UIViewController, SPTAudioStreamingDelegate, UIPic
     @IBAction func onSpotifySwitch(_ sender: UISwitch) {
         if sender.isOn == false {
             Games.spotifyActivated = false
+            Games.loadedPlaylists = nil
         } else {
             // TODO: Check if the access token is still valid to prevent Safari VC popup
             
@@ -62,6 +63,7 @@ class SettingsViewController: UIViewController, SPTAudioStreamingDelegate, UIPic
         //Load user playlists for selection
         SpotifyClient.getCurrentUserPlaylists { (playlists) in
             Games.loadedPlaylists = playlists
+            Games.selectedPlaylistRow = 0       //Default picker controller value
             self.picker.reloadAllComponents()
         }
     }
