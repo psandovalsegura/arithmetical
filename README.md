@@ -4,6 +4,8 @@
 
 **Arithmetical** is a math app built for students. The application's games promote memorization and retention of important mathematical concepts that will continue to appear in future studies. Whether you look to become faster at converting 1101 (base 2) to 13 (base 10), factoring 315 into primes, recalling where the 5π/3 lies on the unit circle, or finding the sum of 19 + 23 quickly, **Arithmetical** can help you reach your goals! 
 
+Note: This repository does not contain code for Arithmetical versions available on the App Store.
+
 Fully functional games include:
 
 - Single Digit Addition
